@@ -13,7 +13,7 @@ Copyright (C) 2011 by the Computer Poker Research Group, University of Alberta
 #include <netinet/tcp.h>
 #include <getopt.h>
 #include "game.h"
-
+#include "handValue/handValue.h"
 
 int main( int argc, char **argv )
 {
@@ -126,7 +126,7 @@ int main( int argc, char **argv )
 
     if( ( random() % 2 ) && raiseIsValid( game, &state.state, &min, &max ) ) {
       /* raise */
-
+	  computeHandValue(game,&state.state,min,max);
       action.type = raise;
       action.size = min + random() % ( max - min + 1 );
     } else {
