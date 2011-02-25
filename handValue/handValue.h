@@ -28,6 +28,9 @@ typedef struct{
 	enum SUITE suite;
 } Card;
 
+
+int rankHand(Card* myCards, int numberOfCards);
+		     
 void computeHandValue(Game *game, State *state, int currentPlayer, int min, int max);
 
 #endif
