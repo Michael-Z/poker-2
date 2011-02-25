@@ -120,13 +120,14 @@ int main( int argc, char **argv )
       continue;
     }
 
-    /* add a colon (guaranteed to fit because we read a new-line in fgets) */
+	computeHandValue(game,&state.state,state.viewingPlayer,min,max);
+    
+	/* add a colon (guaranteed to fit because we read a new-line in fgets) */
     line[ len ] = ':';
     ++len;
 
     if( ( random() % 2 ) && raiseIsValid( game, &state.state, &min, &max ) ) {
       /* raise */
-	  computeHandValue(game,&state.state,min,max);
       action.type = raise;
       action.size = min + random() % ( max - min + 1 );
     } else {
