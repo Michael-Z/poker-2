@@ -120,15 +120,15 @@ int main( int argc, char **argv )
       continue;
     }
 
-	//float IHS = computeHandValue(game,&state.state,state.viewingPlayer,min,max);
+	float IHS = computeHandValue(game,&state.state,state.viewingPlayer,min,max);
     
 	/* add a colon (guaranteed to fit because we read a new-line in fgets) */
     line[ len ] = ':';
     ++len;
 
-    if( ( random() % 2 ) && raiseIsValid( game, &state.state, &min, &max ) ) {
+    //if( ( random() % 2 ) && raiseIsValid( game, &state.state, &min, &max ) ) {
       /* raise */
-    //if ((IHS > 0.6) && raiseIsValid(game, &state.state, &min, &max)) {  
+    if ((IHS > 0.6) && raiseIsValid(game, &state.state, &min, &max)) {  
 	  action.type = raise;
       action.size = min + random() % ( max - min + 1 );
     } else {
