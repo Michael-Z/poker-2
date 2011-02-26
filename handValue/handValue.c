@@ -5,7 +5,7 @@
 
 * Creation Date :
 
-* Last Modified : Fri 25 Feb 2011 05:45:32 PM EST
+* Last Modified : Fri 25 Feb 2011 09:28:48 PM EST
 
 * Created By :
 
@@ -110,43 +110,99 @@ int rankMyHand(Card* myCards, int numberOfCards)
 	return rankCardset(c);
 }
 
-void computeHandValue(Game *game, State *state, int currentPlayer, int min, int max)
+static int isCardChoiceLegal(int rank, int suite, Card* myCards, int maxNumberOfCards)
 {
 	int i = 0;
-	int maxNumberOfCards = 7;
-	int handValue = -1;
+	while (i < maxNumberOfCards)
+	{
+		if ((myCards[i].suite == suite)&&(myCards[i].rank == rank))
+		{
+			return 1;		//collision!
+		}
+		i++;
+	}
+	return 0;
+}
+
+void computeHandValue(Game *game, State *state, int currentPlayer, int min, int max)
+{
+	int i = 0;					//loop vars
+	int j = 0;
+	int k = 0;
+	int l = 0;
+	int win = 0;				//simulated number of wins
+	int lose = 0;				//simulated number of loses
+	int tie = 0;				//simulated number of ties
+	int maxNumberOfCards = 7;	//number of all cards
+	int handValue = -1;			//computing the current best 5 out of 7 and its rank
+	int oppoValue = -1;
+	float IHS = 0;				//Immediate Hand Strength
 	Card *myCards = (Card *) (malloc(sizeof(Card)*maxNumberOfCards));		//counting post-flop maximum
+	Card *oppoCards = (Card *) (malloc(sizeof(Card)*maxNumberOfCards));		//counting post-flop maximum
+	FILE *fp;
+	fp = fopen("output.txt","a+");
 	for (i = 0; i < 2; i++)
 	{
 		myCards[i].rank = rankOfCard(state->holeCards[currentPlayer][i]);
 		myCards[i].suite = suitOfCard(state->holeCards[currentPlayer][i]);
 	}
-	for (i = 0; i < 5; i++)
 	if (state->round == 0)			//pre-flop
 	{
-		handValue = computePreFlop(myCards);
+		IHS = computePreFlop(myCards);
 	}
 	else							//post-flop
 	{
+		
+		//Assign the community cards to respective slots
 		for (i = 0; i < 5; i++)
 		{
 			myCards[i+2].rank = rankOfCard(state->boardCards[i]);
 			myCards[i+2].suite = suitOfCard(state->boardCards[i]);
+			oppoCards[i+2].rank = rankOfCard(state->boardCards[i]);
+			oppoCards[i+2].suite = suitOfCard(state->boardCards[i]);
 		}
+		//what's my current rank?
 		handValue = rankMyHand(myCards, 7);
+		
+		//traverse through all possible opponent hands:
+		for (i = 0; i < 13; i++){
+			for (j = 0; j < 4; j++){		//suit number is 4
+				//check if the card is different from revealed cards
+				if (isCardChoiceLegal(i,j,myCards,maxNumberOfCards)) continue;
+				//assign this card to the first opponent slot
+				oppoCards[0].rank = i;
+				oppoCards[0].suite = j;
+				//do it again, we acutally didn't use the combination (/2), so that performance might be improved by doing that.
+				for (k = 0; k < 13; k++){
+					for (l = 0; l < 4; l++){
+						//check if the card is different from revealed cards
+						if (isCardChoiceLegal(k,l,myCards,maxNumberOfCards)) continue;
+						if ((k==i)&&(l==j)) continue;				//Opponent cannot have two same cards!
+						//assign this card to the first opponent slot
+						oppoCards[1].rank = k;
+						oppoCards[1].suite = l;
+						//by the end of this loop we simulated the opponent cards.
+						oppoValue = rankMyHand(oppoCards, 7);
+						if (oppoValue > handValue) lose++;
+						else if (oppoValue < handValue) win++;
+						else tie++;
+					}
+				}
+			}
+		}
+		IHS = (float)(win + (tie/2)) / (float)(win + tie + lose);
 	}
-	FILE *fp;
-	fp = fopen("output.txt","a+");
+	fprintf(fp,"test var %d, %d, %d\n", win, lose, tie);
 	fprintf(fp,"This is from player %d:, betting round %d.\n", currentPlayer, state->round);
 	fprintf(fp,"My first hole card is %d, suite is %d; Second hole card is %d, suite is %d\n", myCards[0].rank, myCards[0].suite, myCards[1].rank, myCards[1].suite);
 	if (state->round == 0)
 	{
-		fprintf(fp,"Pre-flop hand strength is: %d\n", handValue);
+		fprintf(fp,"Pre-flop hand strength is: %f\n", IHS);
 	}
 	if (state->round > 0)
 	{
 		fprintf(fp, "community cards are: %d, %d, %d, %d, %d\n", rankOfCard(state->boardCards[0]), rankOfCard(state->boardCards[1]), rankOfCard(state->boardCards[2]), rankOfCard(state->boardCards[3]), rankOfCard(state->boardCards[4]));
-		fprintf(fp,"Post-flop hand strength is: %d\n", handValue);
+		fprintf(fp,"Post-flop hand strength is: %f\n", IHS);
 	}
 	fprintf(fp, "--------------------------------\n");
 	fclose(fp);
