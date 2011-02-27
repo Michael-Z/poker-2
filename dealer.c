@@ -1316,7 +1316,6 @@ int main( int argc, char **argv )
 
   /* print out the final port assignments */
   for( i = 0; i < game->numPlayers; ++i ) {
-
     printf( i ? " %"PRIu16 : "%"PRIu16, listenPort[ i ] );
   }
   printf( "\n" );

@@ -64,6 +64,9 @@ close STDOUTWRITEPIPE;
 $_ = <STDOUTREADPIPE> or die "couldn't read port description from dealer";
 @_ = split;
 $#_ + 1 >= $numPlayers or die "couldn't get enough ports from $_";
+print $numPlayers, "\n";
+print $_[0], "\n";
+print $_[$numPlayers-1], "\n";
 
 for( $p = 0; $p < $numPlayers; ++$p ) {
 
