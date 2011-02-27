@@ -1,0 +1,8 @@
+Every time a game begins, the players are given id: 1, 2, 3...
+And the dealer is virtual with id == 0, that is to say, if there're two players, the second player has the dealer button for the first hand; if there're three players, the third player is given the dealer button at the begining. 
+
+The position, small blind and first player is a little bit confusing:
+position: 0 corresponds to the first player after the dealer
+small blind: the first number corresponds to the first player after the dealer
+first player: corresponds to the ith player after the dealer
+
