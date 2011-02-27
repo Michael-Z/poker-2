@@ -1,6 +1,7 @@
 /*
 *	Author: Yikan Chen
 *	Purpose: Head file for the game tree structure
+*   Notice: Two person game only
 *	Date Created:	11/02/26
 */
 
@@ -11,6 +12,7 @@
 #include	<stdio.h>
 #include	<malloc.h>
 #include	"game.h"
+
 
 //TODO: include necessary files for hand strength and opponent model
 //TODO: function needed: 
