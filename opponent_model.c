@@ -5,7 +5,7 @@
 
 * Creation Date : 26-02-2011
 
-* Last Modified : Sun 27 Feb 2011 05:28:38 AM EST
+* Last Modified : Sun 27 Feb 2011 07:14:37 AM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
@@ -256,6 +256,56 @@ void updateModel(uint8_t pos, State *state)
 		}
 }
 	
+struct Node *getNode(Action *act, uint8_t actLen, uint8_t round, uint8_t pos) 
+{
+	int i = 0;
+	Node *node = NULL;
+
+	switch (round) {
+	case 0:
+		if (0 == pos) { node = preflopBase.nonDealerRoot; }
+		else if(1 == pos) { node = preflopBase.dealerRoot; }
+		else { fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);}
+		break;
+	case 1:
+		if (1 == pos) { node = flopBase.nonDealerRoot; }
+		else if(0 == pos) { node = flopBase.dealerRoot; }
+		else { fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);}
+		break;
+	case 2:
+		if (1 == pos) { node = turnBase.nonDealerRoot; }
+		else if(0 == pos) { node = turnBase.dealerRoot; }
+		else { fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);}
+		break;
+	case 3:
+		if (1 == pos) { node = riverBase.nonDealerRoot; }
+		else if(0 == pos) { node = riverBase.dealerRoot; }
+		else { fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);}
+		break;
+	default:
+		fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);
+	}
+		
+	for(i=0; i<actLen; i++) {
+		switch ( act[i].type ) {
+		case fold:
+			node = node->leftChild;
+			break;
+		case call:
+			node = node->midChild;
+			break;
+		case raise:
+			node = node->rightChild;
+			break;
+		default:
+			fprintf(stderr, "invalid action: %d\n", act[i].type);
+			exit(EXIT_FAILURE);
+		}
+	}
+	return node;
+}
+			
+		
 void releaseNode(struct Node *node)
 {
 	if (NULL == node) return;

@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -DDEBUG  -g -O3 -Wall
 
-all:	dealer example_player my_player improved player
+all:	dealer example_player my_player improved_player
 
 dealer: game.c game.h evalHandTables rng.c rng.h dealer.c
 	$(CC) $(CFLAGS) -o $@ game.c rng.c dealer.c
