@@ -45,7 +45,7 @@ typedef struct {
 	struct Node *nonDealerRoot;
 } OppBase;
 
-extern OppBase preflopBase, flopBase, turnBase, riverBase;
+extern OppBase flopsBase[MAX_ROUNDS];
 
 unsigned calcStrength();
 /* ========= All the following functions are now only for two people, limit game =================*/

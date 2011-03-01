@@ -25,7 +25,7 @@
 #include "opponent_model.h"
 
 	
-OppBase preflopBase, flopBase, turnBase, riverBase;
+OppBase flopsBase[MAX_ROUNDS];
 
 unsigned calcStrength() {
 	return 1;
@@ -67,17 +67,11 @@ struct Node* initBase(OppBase *base, bool isPlayFirst)
 
 void initModel()
 {
-	preflopBase.dealerRoot = NULL;
-	preflopBase.nonDealerRoot = NULL;
-
-	flopBase.dealerRoot = NULL;
-	flopBase.nonDealerRoot = NULL;
-	
-	turnBase.dealerRoot = NULL;
-	turnBase.nonDealerRoot = NULL;
-	
-	riverBase.dealerRoot = NULL;
-	riverBase.nonDealerRoot = NULL;
+	int i;
+	for(i=0; i<MAX_ROUNDS; i++) {
+		flopsBase[i].dealerRoot = NULL;
+		flopsBase[i].nonDealerRoot = NULL;
+	}
 }
 
 void updateBase(uint8_t round, uint8_t pos, State *state)
@@ -89,23 +83,13 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 	struct Node *pt = NULL;
 	OppBase *base;
 
-	switch (round) {
-		case 0:
-			base = &preflopBase;
-			break;
-		case 1:
-			base = &flopBase;
-			break;
-		case 2:
-			base = &turnBase;
-			break;
-		case 3:
-			base = &riverBase;
-			break;
-		default:
-			fprintf(stderr, "updateBase: invalid round argument %d\n", round);
-			exit(EXIT_FAILURE);
-		}
+	if (round < MAX_ROUNDS) {
+		base = &flopsBase[round];
+	}
+	else {
+		fprintf(stderr, "updateBase: invalid round argument %d\n", round);
+		exit(EXIT_FAILURE);
+	}
 	
 	/* extract actions in  stage */
 	memcpy(localActionList, state->action[round], state->numActions[round]* sizeof(Action));
@@ -251,7 +235,7 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 void updateModel(uint8_t pos, State *state)
 {
 	int i;
-	for(i=0; i<4; i++) {//FIXME: 4
+	for(i=0; i<4; i++) {
 		updateBase((uint8_t)i, pos, state);
 		}
 }
@@ -259,31 +243,21 @@ void updateModel(uint8_t pos, State *state)
 struct Node *getNode(Action *act, uint8_t actLen, uint8_t round, uint8_t pos) 
 {
 	int i = 0;
-	Node *node = NULL;
+	struct Node *node = NULL;
 
-	switch (round) {
-	case 0:
-		if (0 == pos) { node = preflopBase.nonDealerRoot; }
-		else if(1 == pos) { node = preflopBase.dealerRoot; }
+	if (round >= MAX_ROUNDS) {
+		fprintf(stderr, "invalid pos: %d\n", pos); 
+		exit(EXIT_FAILURE);
+	}
+	else if (0 == round) {
+		if (0 == pos) { node = flopsBase[round].nonDealerRoot; }
+		else if(1 == pos) { node = flopsBase[round].dealerRoot; }
 		else { fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);}
-		break;
-	case 1:
-		if (1 == pos) { node = flopBase.nonDealerRoot; }
-		else if(0 == pos) { node = flopBase.dealerRoot; }
+	}
+	else {
+		if (1 == pos) { node = flopsBase[round].nonDealerRoot; }
+		else if(0 == pos) { node = flopsBase[round].dealerRoot; }
 		else { fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);}
-		break;
-	case 2:
-		if (1 == pos) { node = turnBase.nonDealerRoot; }
-		else if(0 == pos) { node = turnBase.dealerRoot; }
-		else { fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);}
-		break;
-	case 3:
-		if (1 == pos) { node = riverBase.nonDealerRoot; }
-		else if(0 == pos) { node = riverBase.dealerRoot; }
-		else { fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);}
-		break;
-	default:
-		fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);
 	}
 		
 	for(i=0; i<actLen; i++) {
@@ -374,9 +348,9 @@ void printBase(OppBase *base)
 
 void printModel()
 {
-	printBase(&preflopBase);
-	printBase(&flopBase);
-	printBase(&turnBase);
-	printBase(&riverBase);
+	int i;
+	for(i=0; i<MAX_ROUNDS; i++) {
+		printBase(&flopsBase[i]);
+	}
 }
 #endif
