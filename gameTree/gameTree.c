@@ -17,15 +17,16 @@ Gametree* constructTree(Game *game, State *state, int currentStage, int opponent
 	uint8_t currentRound;		//current round
 	uint8_t numRaise;		//number of raises allowed in this game
 	DataType handStrength;
-	bool isFirst = false;
+	bool isFirst = 0;
+	Gametree *thisGametree = initTree(numRaise);
 
 	
 	currentRound = state->round;
 	numRaise = game->maxRaises[currentRound];
 	handStrength = computeHandStrength(Game *game, State *state);
-	if ((int)(game->firstplayer[currentRound]) == selfID)
-		isFirst = true;
-	Gametree thisGame = initTree(numRaise);
+	if ((int)(game->firstPlayer[currentRound]) == selfID)
+		isFirst = 1;
+
 	thisGametree = computeTreevalue(game, state, thisGametree, numRaise, handStrength, opponentID, isFirst);
 	return thisGametree;
 }
@@ -36,9 +37,10 @@ void main()
 {
 
 	Gametree* ok;
+	int test = 0;
 	ok = initTree(2);
 
-	int test = 0;
+
 	test++;
 	test++;
 
@@ -74,8 +76,9 @@ Gametree* initTree(int numRaise)
 	{
 		while (front < rear)
 		{
-			Gametree* foldnode = (Gametree *)malloc(sizeof(Gametree));
-
+			Gametree* foldnode = (Gametree *)malloc(sizeof(Gametree *));
+			Gametree* callnode = (Gametree *)malloc(sizeof(Gametree *));
+			Gametree* raisenode = (Gametree *)malloc(sizeof(Gametree *));
 
 			foldnode->data = 0;
 			foldnode->nodeType = 0;
@@ -87,7 +90,7 @@ Gametree* initTree(int numRaise)
 			nodeindex[temprear] = foldnode;
 			temprear++;
 
-			Gametree* callnode = (Gametree *)malloc(sizeof(Gametree));
+
 			callnode->data = 0;
 			callnode->nodeType = 1;
 			callnode->raise = NULL;
@@ -98,7 +101,7 @@ Gametree* initTree(int numRaise)
 			nodeindex[temprear] = callnode;
 			temprear++;
 
-			Gametree* raisenode = (Gametree *)malloc(sizeof(Gametree));
+
 			raisenode->data = 0;
 			raisenode->nodeType = 2;
 			raisenode->raise = NULL;
@@ -157,6 +160,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 	int	rear = 1;
 	int i = 0;
 	int temprear = rear;
+	DataType* opponentAction;
 	Gametree *nodeindex[MAXNODE];
 	for (i = 0; i < MAXNODE; i++)
 		nodeindex[i] = NULL;
@@ -190,7 +194,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 		if (!(nodeindex[i]->fold))						//This node has no child
 		{
 			nodeDegree = getDegree(nodeindex[i]);
-			totalSpent = totalSpent(game, state, nodeindex[i], &playerSpent, isFirst);
+			totalSpent = totalSpentChips(game, state, nodeindex[i], &playerSpent, isFirst);
 			if (((!nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
 			//If player A will decide first, then all nodes in even level will represent results of A's move, otherwise all nodes in odd level will represent results of  A's move
 			{
@@ -214,12 +218,12 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 		nodeDegree = getDegree(nodeindex[i]);
 		if (nodeDegree == 1)
 			break;
-		DataType* opponentAction;
+
 		if ((nodeindex[i]->parent == nodeindex[i-1]->parent) && (nodeindex[i-1]->parent == nodeindex[i-2]->parent))
 			//Their parents will be determined by all the fold, call and raise operation values
 		{
 			if (((!nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
-				nodeindex[i]->parent->data = max(nodeindex[i]->data,nodeindex[i-1]->data,nodeindex[i-2]->data);
+				nodeindex[i]->parent->data = findMax(nodeindex[i]->data,nodeindex[i-1]->data,nodeindex[i-2]->data);
 			else
 			{
 				opponentAction=getOpponentaction(game,state);
@@ -231,7 +235,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 			//Their parents will only be determined by fold and call operations
 		{
 			if (((!nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
-				nodeindex[i]->parent->data = (nodeindex[i]->data > nodeindex[i-1]->data) ? (nodeindex[i]->data :nodeindex[i]->data);
+				nodeindex[i]->parent->data = ((nodeindex[i]->data) > (nodeindex[i-1]->data)) ? (nodeindex[i]->data) :(nodeindex[i]->data);
 			else
 			{
 				opponentAction=getOpponentaction(game,state);
@@ -259,7 +263,7 @@ int getDegree(Gametree* testnode)				//return the degree of any node, root node 
 	}
 }
 
-int totalSpent(Game *game, State *state, Gametree *testnode, int* playerSpent, bool isFirst)
+int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, bool isFirst)
 {
 	int totalSpent = state->spent[0]+state->spent[1];
 	int currentCall = 0;
@@ -320,12 +324,13 @@ int totalSpent(Game *game, State *state, Gametree *testnode, int* playerSpent, b
 					currentCall *= 2;				//TODO: Check raise is 2*currentcall or raise[2]?
 					if (j%2 == 0)					//Player A raises
 						(*playerSpent) += currentCall;
-					totalSpent += currentCall
+					totalSpent += currentCall;
 				}
 				i--;
 				j++;
 			}
 		return totalSpent;
+		}
 	}
 	else						//After community cards are dealt
 	{
@@ -344,7 +349,7 @@ int totalSpent(Game *game, State *state, Gametree *testnode, int* playerSpent, b
 				currentCall *= 2;				//TODO: Check raise is 2*currentcall or raise[2]?
 				if (j%2 == 0)					//Player A raises
 					(*playerSpent) += currentCall;
-				totalSpent += currentCall
+				totalSpent += currentCall;
 			}
 			i--;
 			j++;
@@ -353,11 +358,11 @@ int totalSpent(Game *game, State *state, Gametree *testnode, int* playerSpent, b
 	}
 }
 
-DataType max(DataType x1, DataType x2, DataType x3)
+DataType findMax(DataType x1, DataType x2, DataType x3)
 {
-	DataType max = (x1 > x2) ? (x1 : x2);
-	max = (max > x3) ? (max : x3);
-	return max;
+	DataType maxNo = (x1 > x2) ? x1 : x2;
+	maxNo = (maxNo > x3) ? maxNo : x3;
+	return maxNo;
 }
 
 Action* decideAction(Gametree* thisGametree, Action* actionList)
