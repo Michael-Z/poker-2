@@ -5,7 +5,7 @@
 
 * Creation Date : 26-02-2011
 
-* Last Modified : Tue 01 Mar 2011 05:28:54 PM EST
+* Last Modified : Tue 01 Mar 2011 08:39:59 PM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
@@ -65,10 +65,10 @@ struct Node* initBase(OppBase *base, bool isPlayFirst)
 	}
 }
 
-void initModel()
+void initModel(Game *game)
 {
 	int i;
-	for(i=0; i<MAX_ROUNDS; i++) {
+	for (i=0; i<game->numRounds; i++) {
 		flopsBase[i].dealerRoot = NULL;
 		flopsBase[i].nonDealerRoot = NULL;
 	}
@@ -106,10 +106,10 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 	holeCards[1] = state->holeCards[pos][1];
 
 	if (0 == round) {/* preflop */
-		if (pos == 0) { /* non-dealer */
+		if (pos == 0) { /* non-first hand*/
 			pt = (NULL == base->nonDealerRoot ? initBase(base, false): base->nonDealerRoot);
 		}
-		else if (pos == 1) { /* dealer */
+		else if (pos == 1) { /* first hand*/
 			pt = (NULL == base->dealerRoot ? initBase(base, true): base->dealerRoot);
 		}
 		else {
@@ -119,10 +119,10 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 	}
 	else {
 		if (pos == 0) { /* first player*/
-			pt = (NULL == base->nonDealerRoot ? initBase(base, true): base->nonDealerRoot);
+			pt = (NULL == base->dealerRoot ? initBase(base, true): base->dealerRoot);
 		}
 		else if (pos == 1) { /* non-first player*/
-			pt = (NULL == base->dealerRoot ? initBase(base, false): base->dealerRoot);
+			pt = (NULL == base->nonDealerRoot ? initBase(base, false): base->nonDealerRoot);
 		}
 		else {
 			fprintf(stderr, "updateOppBase: invalid player position\n");
@@ -232,12 +232,12 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 	}
 }
 
-void updateModel(uint8_t pos, State *state)
+void updateModel(Game *game, uint8_t pos, State *state)
 {
 	int i;
-	for(i=0; i<MAX_ROUNDS; i++) {
+	for(i=0; i<game->numRounds; i++) {
 		updateBase((uint8_t)i, pos, state);
-		}
+	}
 }
 	
 struct Node *getNode(Action *act, uint8_t actLen, uint8_t round, uint8_t pos) 
@@ -250,8 +250,8 @@ struct Node *getNode(Action *act, uint8_t actLen, uint8_t round, uint8_t pos)
 		exit(EXIT_FAILURE);
 	}
 	else if (0 == round) {
-		if (0 == pos) { node = flopsBase[round].nonDealerRoot; }
-		else if(1 == pos) { node = flopsBase[round].dealerRoot; }
+		if (0 == pos) { node = flopsBase[0].nonDealerRoot; }
+		else if(1 == pos) { node = flopsBase[0].dealerRoot; }
 		else { fprintf(stderr, "invalid pos: %d\n", pos); exit(EXIT_FAILURE);}
 	}
 	else {
@@ -346,10 +346,10 @@ void printBase(OppBase *base)
 	printf("\n");
 }
 
-void printModel()
+void printModel(Game *game)
 {
 	int i;
-	for(i=0; i<MAX_ROUNDS; i++) {
+	for(i=0; i<game->numRounds; i++) {
 		printBase(&flopsBase[i]);
 	}
 }

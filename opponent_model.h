@@ -5,7 +5,7 @@
 
 * Creation Date : 23-02-2011
 
-* Last Modified : Sun 27 Feb 2011 07:14:39 AM EST
+* Last Modified : Tue 01 Mar 2011 07:03:12 PM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
@@ -52,7 +52,7 @@ unsigned calcStrength();
 void initNode(struct Node* node, enum NodeType type);
 struct Node* initBase(OppBase *base, bool isPlayFirst);
 void updateBase(uint8_t round, uint8_t pos, State *state);
-void updateModel(uint8_t pos, State *state);
+void updateModel(Game *game, uint8_t pos, State *state);
 struct Node *getNode(Action *act, uint8_t actLen, uint8_t round, uint8_t pos);
 void releaseNode(struct Node *node);
 void releaseBase(OppBase *base);
