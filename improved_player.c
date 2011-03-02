@@ -120,7 +120,7 @@ int main( int argc, char **argv )
       continue;
     }
 
-	float IHS = computeHandValue(game,&state.state,state.viewingPlayer,min,max);
+	int bucket = computeHandValue(game,&state.state,state.viewingPlayer,min,max);
     
 	/* add a colon (guaranteed to fit because we read a new-line in fgets) */
     line[ len ] = ':';
@@ -128,15 +128,19 @@ int main( int argc, char **argv )
 
     //if( ( random() % 2 ) && raiseIsValid( game, &state.state, &min, &max ) ) {
       /* raise */
-    if ((IHS > 0.6) && raiseIsValid(game, &state.state, &min, &max)) {  
+    if ((bucket >= 3) && raiseIsValid(game, &state.state, &min, &max)) {  
 	  action.type = raise;
       action.size = min + random() % ( max - min + 1 );
-    } else {
+    } else if (bucket >=2) {
       /* call */
 
       action.type = call;
       action.size = 0;
     }
+	else{
+		action.type = fold;
+		action.size = 0;
+	}
 
     if( !isValidAction( game, &state.state, 0, &action ) ) {
 

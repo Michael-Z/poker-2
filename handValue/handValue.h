@@ -5,7 +5,7 @@
 
 * Creation Date :
 
-* Last Modified : Sat 26 Feb 2011 03:50:42 PM EST
+* Last Modified : Tue 01 Mar 2011 07:51:24 PM EST
 
 * Created By : Yuchen Zhou
 
@@ -31,6 +31,6 @@ typedef struct{
 
 int rankHand(Card* myCards, int numberOfCards);
 		     
-float computeHandValue(Game *game, State *state, int currentPlayer, int min, int max);
+int computeHandValue(Game *game, State *state, int currentPlayer, int min, int max);
 
 #endif

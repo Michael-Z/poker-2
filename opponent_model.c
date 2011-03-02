@@ -5,7 +5,7 @@
 
 * Creation Date : 26-02-2011
 
-* Last Modified : Sun 27 Feb 2011 07:14:37 AM EST
+* Last Modified : Tue 01 Mar 2011 05:28:54 PM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
@@ -235,7 +235,7 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 void updateModel(uint8_t pos, State *state)
 {
 	int i;
-	for(i=0; i<4; i++) {
+	for(i=0; i<MAX_ROUNDS; i++) {
 		updateBase((uint8_t)i, pos, state);
 		}
 }
