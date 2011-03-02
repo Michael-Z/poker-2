@@ -62,11 +62,11 @@ Action* decideAction(Gametree* thisGametree, Action* actionList, int actionNumbe
 
 
 //Naive functions for debugging
-DataType computeHandStrength(Game *game, State *state);
+//DataType computeHandStrength(Game *game, State *state, int selfID);
 
-DataType winningProb(Game* game, State* state, DataType handStrength,int opponentID);
+//DataType winningProb(Game* game, State* state, DataType handStrength,int opponentID);
 
-DataType* getOpponentaction(Game* game,State* state);
+//DataType* getOpponentaction(Game* game,State* state);
 
 
 //from the actionList, return the best action

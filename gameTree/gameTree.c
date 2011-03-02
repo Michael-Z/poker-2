@@ -33,7 +33,7 @@ Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)
 }
 
 
-
+/*
 void main()
 {
 
@@ -69,6 +69,8 @@ void main()
 	test++;
 
 }
+*/
+
 
 Gametree* initTree(int numRaise)
 //Generate the structure of the tree
@@ -513,6 +515,7 @@ Action* decideAction(Gametree* thisGametree, Action* actionList, int actionNumbe
 
 
 //Naive functions for debugging
+/*
 DataType computeHandStrength(Game *game, State *state)
 {
 	DataType k = 0.45;
@@ -533,3 +536,4 @@ DataType* getOpponentaction(Game* game,State* state)
 	return opponentAction;
 
 }
+*/
