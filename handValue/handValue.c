@@ -5,7 +5,7 @@
 
 * Creation Date :
 
-* Last Modified : Sat 26 Feb 2011 03:53:31 PM EST
+* Last Modified : Tue 01 Mar 2011 08:15:37 PM EST
 
 * Created By :
 
@@ -96,7 +96,10 @@ float computePreFlop(Card *myCards)
 	{
 		return 0.51;
 	}
-	return 0.1;
+	if ((strcmp(cards,"72o"))==0||(strcmp(cards,"62o"))==0||(strcmp(cards,"82o"))==0||(strcmp(cards,"83o"))==0||(strcmp(cards,"92o"))==0||(strcmp(cards,"62s"))==0||(strcmp(cards,"72s"))==0||(strcmp(cards,"82s"))==0||(strcmp(cards,"92s"))==0||(strcmp(cards,"83s"))==0){
+		return 0.1;
+	}
+	else return 0.3;
 }
 
 int rankMyHand(Card* myCards, int numberOfCards)
@@ -124,8 +127,9 @@ static int isCardChoiceLegal(int rank, int suite, Card* myCards, int maxNumberOf
 	return 0;
 }
 
-float computeHandValue(Game *game, State *state, int currentPlayer, int min, int max)
+int computeHandValue(Game *game, State *state, int currentPlayer, int min, int max)
 {
+	int bucket = 0;				//final return value
 	int i = 0;					//loop vars
 	int j = 0;
 	int k = 0;
@@ -139,8 +143,6 @@ float computeHandValue(Game *game, State *state, int currentPlayer, int min, int
 	float IHS = 0;				//Immediate Hand Strength
 	Card *myCards = (Card *) (malloc(sizeof(Card)*maxNumberOfCards));		//counting post-flop maximum
 	Card *oppoCards = (Card *) (malloc(sizeof(Card)*maxNumberOfCards));		//counting post-flop maximum
-	FILE *fp;
-	fp = fopen("output.txt","a+");
 	for (i = 0; i < 2; i++)
 	{
 		myCards[i].rank = rankOfCard(state->holeCards[currentPlayer][i]);
@@ -149,6 +151,23 @@ float computeHandValue(Game *game, State *state, int currentPlayer, int min, int
 	if (state->round == 0)			//pre-flop
 	{
 		IHS = computePreFlop(myCards);
+		if (IHS>0.94)
+		{
+			bucket = 5;
+		}
+		else if (IHS>0.81)
+		{
+			bucket = 4;
+		}
+		else if (IHS>0.67)
+		{
+			bucket = 3;
+		}
+		else if (IHS>0.15)
+		{
+			bucket = 2;
+		}
+		else bucket = 1;
 	}
 	else							//post-flop
 	{
@@ -191,23 +210,38 @@ float computeHandValue(Game *game, State *state, int currentPlayer, int min, int
 			}
 		}
 		IHS = (float)(win + (tie/2)) / (float)(win + tie + lose);
+		if (IHS > 0.87) bucket = 5;
+		else if (IHS > 0.72) bucket = 4;
+		else if (IHS > 0.53) bucket = 3;
+		else if (IHS > 0.3) bucket = 2;
+		else bucket = 1;
 	}
+	/*if (state->round>0)
+	{
+		fprintf(fp,"This is from player %d:, betting round %d.\n", currentPlayer, state->round);
+		fprintf(fp,"My first hole card is %d, suite is %d; Second hole card is %d, suite is %d\n", myCards[0].rank, myCards[0].suite, myCards[1].rank, myCards[1].suite);
+		fprintf(fp, "community cards are: %d, %d, %d, %d, %d\n", rankOfCard(state->boardCards[0]), rankOfCard(state->boardCards[1]), rankOfCard(state->boardCards[2]), rankOfCard(state->boardCards[3]), rankOfCard(state->boardCards[4]));
+		fprintf(fp, "suits are: %d, %d, %d, %d, %d\n", suitOfCard(state->boardCards[0]),suitOfCard(state->boardCards[1]),suitOfCard(state->boardCards[2]),suitOfCard(state->boardCards[3]),suitOfCard(state->boardCards[4]));
+		fprintf(fp,"Post-flop hand strength is: %f\n\n", bucket);
+	}
+	fclose(fp);
 	//IHS is derived. Now we compute EHS:
 	//For wv limit poker, we don't have to worry about EHS.
-	/*fprintf(fp,"test var %d, %d, %d\n", win, lose, tie);
+	FILE *fp;
+	fp = fopen("output.txt","a+");
 	fprintf(fp,"This is from player %d:, betting round %d.\n", currentPlayer, state->round);
 	fprintf(fp,"My first hole card is %d, suite is %d; Second hole card is %d, suite is %d\n", myCards[0].rank, myCards[0].suite, myCards[1].rank, myCards[1].suite);
 	if (state->round == 0)
 	{
-		fprintf(fp,"Pre-flop hand strength is: %f\n", IHS);
+		fprintf(fp,"Pre-flop hand strength is: %d\n", bucket);
 	}
 	if (state->round > 0)
 	{
 		fprintf(fp, "community cards are: %d, %d, %d, %d, %d\n", rankOfCard(state->boardCards[0]), rankOfCard(state->boardCards[1]), rankOfCard(state->boardCards[2]), rankOfCard(state->boardCards[3]), rankOfCard(state->boardCards[4]));
-		fprintf(fp,"Post-flop hand strength is: %f\n", IHS);
+		fprintf(fp,"Post-flop hand strength is: %d\n", bucket);
 	}
 	fprintf(fp, "--------------------------------\n");
 	fclose(fp);*/
-	return IHS;
+	return bucket;
 }
 
