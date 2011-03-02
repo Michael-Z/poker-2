@@ -11,19 +11,20 @@
 
 
 
-Gametree* constructTree(Game *game, State *state, int currentStage, int opponentID, int selfID)		
+Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)		
 //Construct a game tree in certain stages. If the current stage does not change, we can always determine next action with this tree
 {
 	uint8_t currentRound;		//current round
 	uint8_t numRaise;		//number of raises allowed in this game
 	DataType handStrength;
 	bool isFirst = 0;
-	Gametree *thisGametree = initTree(numRaise);
+	Gametree *thisGametree;
 
 	
 	currentRound = state->round;
 	numRaise = game->maxRaises[currentRound];
-	handStrength = computeHandStrength(Game *game, State *state);
+	thisGametree = initTree(numRaise);
+	handStrength = computeHandStrength(game,state);
 	if ((int)(game->firstPlayer[currentRound]) == selfID)
 		isFirst = 1;
 
@@ -36,9 +37,32 @@ Gametree* constructTree(Game *game, State *state, int currentStage, int opponent
 void main()
 {
 
-	Gametree* ok;
+	Gametree* ok = (Gametree *)malloc(sizeof(Gametree *));
+
+	Game testgame;
+	State teststate;
 	int test = 0;
-	ok = initTree(2);
+
+	testgame.maxRaises[0] = 2;
+	testgame.maxRaises[1] = 2;
+	testgame.firstPlayer[0] = 1;
+	testgame.firstPlayer[1] = 1;
+	testgame.blind[0] = 10;
+	testgame.blind[1] = 5;
+	testgame.raiseSize[0] = 10;
+	testgame.raiseSize[1] = 20;
+
+	teststate.round = 1 ;
+	teststate.spent[0] = 30;
+	teststate.spent[1] = 30;
+
+
+
+
+
+
+
+	ok = constructTree(&testgame, &teststate, 1, 0);
 
 
 	test++;
@@ -51,13 +75,25 @@ Gametree* initTree(int numRaise)
 {
 	//First generate a full tree and then cut it to the gametree.
 	int raisenumber = 0;
-	int maxlevel = (int)numRaise*2+2;		//maxlevel of the tree is combining calls/raises
+
+
+
+	//---------------------------------------------------------------------------------------
+	//NOTICE: Current logic about the depth of the tree:
+	//Two player game, one player can only raise ceil(numRaise/2) times and from that we know 
+	//the max possible depth of the tree should be: crrc for numRaise = 2, generally, it should
+	//be numRaise+2 operations and numRaise+3 levels
+	//---------------------------------------------------------------------------------------
+
+	int maxlevel = (int)numRaise+3;		//maxlevel of the tree is combining calls/raises
 	int level = 1;					//the level of the tree
 	int front = 0;
 	int	rear = 1;
 	int i = 0;
+	int j = 0;
 	int temprear = rear;
-	Gametree* rootnode = (Gametree *)malloc(sizeof(Gametree));	
+	Gametree* rootnode = (Gametree *)malloc(sizeof(Gametree *));	
+	Gametree* temp;
 	
 	Gametree *nodeindex[MAXNODE];
 	for (i = 0; i < MAXNODE; i++)
@@ -120,7 +156,7 @@ Gametree* initTree(int numRaise)
 
 	//Begin to delete irreasonable nodes
 
-	for (i = 0; i < rear; i++)
+	for (i = 0; i < rear; i++)		//0~rear will be all the nodes
 	{
 		if (nodeindex[i]->fold)
 		{		
@@ -131,6 +167,28 @@ Gametree* initTree(int numRaise)
 				nodeindex[i]->fold->raise = NULL;
 			}
 		}
+		
+		if (nodeindex[i]->raise)							//calls after a raise must terminate the game
+		{
+			if ((nodeindex[i]->raise)->call)
+			{
+				(nodeindex[i]->raise)->call->fold = NULL;
+				(nodeindex[i]->raise)->call->call = NULL;
+				(nodeindex[i]->raise)->call->raise = NULL;
+			}
+
+			j = 1;
+			temp = nodeindex[i]->raise;
+			while((j < numRaise) && temp)					//there will be at most numRaise raises
+			{
+				temp = temp->raise;
+				j++;
+			}
+			if (temp)
+				temp->raise = NULL;
+		}
+
+
 
 		if	(nodeindex[i]->call)
 		{
@@ -145,7 +203,7 @@ Gametree* initTree(int numRaise)
 			}
 		}
 	}
-	free(nodeindex);
+//	free(nodeindex);
 	return rootnode;
 }
 
@@ -154,7 +212,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 {
 	int nodeDegree;											//the degree of certain node
 	int totalSpent, playerSpent;								//total number of chips in the pot and the chip player A spent
-	int maxlevel = 2*numRaise+2;
+	int maxlevel = numRaise+3;
 	int level = 1;
 	int front = 0;
 	int	rear = 1;
@@ -172,12 +230,16 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 	{
 		while (front < rear)
 		{
-			if ((nodeindex[front]->call) && (nodeindex[front]->fold) && (nodeindex[front]->raise))
+			if ((nodeindex[front]->call) && (nodeindex[front]->fold))
 			{
 				nodeindex[temprear] =  nodeindex[front]->fold;
-				nodeindex[temprear+1] =  nodeindex[front]->call;				
-				nodeindex[temprear+2] =  nodeindex[front]->raise;
-				temprear +=3;
+				nodeindex[temprear+1] =  nodeindex[front]->call;	
+				temprear +=2;
+				if (nodeindex[front]->raise)
+				{
+					nodeindex[temprear] =  nodeindex[front]->raise;
+					temprear ++;
+				}
 			}
 			front++;
 		}
@@ -195,7 +257,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 		{
 			nodeDegree = getDegree(nodeindex[i]);
 			totalSpent = totalSpentChips(game, state, nodeindex[i], &playerSpent, isFirst);
-			if (((!nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
+			if ((!(nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
 			//If player A will decide first, then all nodes in even level will represent results of A's move, otherwise all nodes in odd level will represent results of  A's move
 			{
 				if (nodeindex[i]->nodeType == 0)	//a fold node
@@ -213,16 +275,16 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 		}
 	}
 
-	for (i = rear; i >= 0; i--)
+	for (i = rear; i >= 0;)
 	{
 		nodeDegree = getDegree(nodeindex[i]);
-		if (nodeDegree == 1)
+		if (nodeDegree == 1)					//The data for the root node should always be computed later
 			break;
 
 		if ((nodeindex[i]->parent == nodeindex[i-1]->parent) && (nodeindex[i-1]->parent == nodeindex[i-2]->parent))
 			//Their parents will be determined by all the fold, call and raise operation values
 		{
-			if (((!nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
+			if ((!(nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
 				nodeindex[i]->parent->data = findMax(nodeindex[i]->data,nodeindex[i-1]->data,nodeindex[i-2]->data);
 			else
 			{
@@ -234,7 +296,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 		else
 			//Their parents will only be determined by fold and call operations
 		{
-			if (((!nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
+			if ((!(nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
 				nodeindex[i]->parent->data = ((nodeindex[i]->data) > (nodeindex[i-1]->data)) ? (nodeindex[i]->data) :(nodeindex[i]->data);
 			else
 			{
@@ -244,19 +306,21 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 			i -= 2;
 		}
 	}
-
+	return emptyTree;
 }
 
 int getDegree(Gametree* testnode)				//return the degree of any node, root node will be in level 1
 {
 	int degree = 1;
-	if (!(testnode->parent))
+	Gametree *tempnode;
+	tempnode = testnode;
+	if (!(tempnode->parent))
 		return 1;
 	else
 	{
-		while (testnode->parent)
+		while (tempnode->parent)
 		{
-			testnode = testnode->parent;
+			tempnode = tempnode->parent;
 			degree++;
 		}
 		return degree;
@@ -265,21 +329,24 @@ int getDegree(Gametree* testnode)				//return the degree of any node, root node 
 
 int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, bool isFirst)
 {
-	int totalSpent = state->spent[0]+state->spent[1];
-	int currentCall = 0;
+	int totalSpent = state->spent[0]+state->spent[1];				//Chips already in the pot, TWO PLAYERS ONLY!
+	int currentCall = 0;											//Like check, no more chips needed to check
 	int countchips[MAXDEGREE];
 	int i = 0;
 	int j = 0;
+	int temp = 0;
+	Gametree* tempnode;
+	tempnode = testnode;
 	//for (i=0;i<MAXDEGREE;i++)
 	//	countchips[i] = 10;					//Irreasonable number 
 
-	while (testnode->parent)
+	while (tempnode->parent)						//Find how this node is reached
 	{
-		countchips[i] = testnode->nodeType;
-		testnode = testnode->parent;
+		countchips[i] = tempnode->nodeType;
+		tempnode = tempnode->parent;
 		i++;
 	}	
-	i--;
+	i--;						//countchips[i] means the first action (from root)
 
 	if (isFirst)				//Player A plays first, j = 0, then all j%2==0 implies it is A's move
 	{
@@ -298,33 +365,49 @@ int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpe
 			return game->blind[0] + game->blind[1];
 		else
 		{
-			if (i == 0)								//Fold directly
+			if (i == 0)								//fold directly because all the testnodes in this function must be leaf nodes
 			{
 				if (j == 0)							//Player A folds, then Player A pays the small blind
 					(*playerSpent) = game->blind[1];
 				else								//Player B folds, then Player A pays the big blind
-					(*playerSpent) = game->blind[2];
+					(*playerSpent) = game->blind[0];
 				return game->blind[0] + game->blind[1];
 
 			}
-			totalSpent = game->blind[0];						//big blind
+			totalSpent = game->blind[0] * 2;						//big blind
 			currentCall = game->blind[0];
+			*playerSpent = game->blind[0];
 			while (i>=0)
 			{
 				if (countchips[i] == 0)				//fold, exit
-					return totalSpent;				
+				{
+					if (getDegree(testnode) == 2)
+					{
+						if (isFirst)
+							*playerSpent = game->blind[1];
+						else
+							*playerSpent = game->blind[0];
+						totalSpent = game->blind[0] + game->blind[1];
+					}
+					return totalSpent;	
+				}
 				if (countchips[i] == 1)				//call
 				{
 					if (j%2 == 0)					//Player A calls
-						(*playerSpent) += currentCall;
-					totalSpent+= currentCall;
+						(*playerSpent) = currentCall;
+					if (countchips[i+1] == 2)		//just raised, MAYBE A PROBLEM when numRaise != 2
+						totalSpent = totalSpent - (currentCall - game->raiseSize[state->round]) + currentCall;
+
 				}
 				if (countchips[i] == 2)				//raise
 				{
-					currentCall *= 2;				//TODO: Check raise is 2*currentcall or raise[2]?
+					currentCall += game->raiseSize[state->round];				//after one raise, to call the player must pay extra raiseSize(currentround) chips
 					if (j%2 == 0)					//Player A raises
-						(*playerSpent) += currentCall;
-					totalSpent += currentCall;
+						(*playerSpent) = currentCall;
+					if (countchips[i+1] == 2)		//just raised
+						totalSpent = totalSpent - (currentCall - 2 * game->raiseSize[state->round]) + currentCall;
+					else
+						totalSpent = totalSpent - (currentCall - game->raiseSize[state->round]) + currentCall;
 				}
 				i--;
 				j++;
@@ -334,28 +417,67 @@ int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpe
 	}
 	else						//After community cards are dealt
 	{
+		temp = *playerSpent;
+		*playerSpent = 0;
 		while (i>=0)
 		{
 			if (countchips[i] == 0)				//fold, exit
-				return totalSpent;				
+			{
+				*playerSpent = *playerSpent + temp;
+				return totalSpent;
+			}
 			if (countchips[i] == 1)				//call
 			{
 				if (j%2 == 0)					//Player A calls
-					(*playerSpent) += currentCall;
-				totalSpent+= currentCall;
+					(*playerSpent) = currentCall;
+				if (countchips[i+1] == 2)		//just raised
+					totalSpent = totalSpent - (currentCall - game->raiseSize[state->round]) + currentCall;
 			}
 			if (countchips[i] == 2)				//raise
 			{
-				currentCall *= 2;				//TODO: Check raise is 2*currentcall or raise[2]?
+				currentCall += game->raiseSize[state->round];				//after one raise, to call the player must pay extra raiseSize(currentround) chips
 				if (j%2 == 0)					//Player A raises
-					(*playerSpent) += currentCall;
-				totalSpent += currentCall;
+					(*playerSpent) = currentCall;
+				if (countchips[i+1] == 2)		//just raised
+					totalSpent = totalSpent - (currentCall - 2 * game->raiseSize[state->round]) + currentCall;
+				else
+					totalSpent = totalSpent - (currentCall - game->raiseSize[state->round]) + currentCall;
 			}
 			i--;
 			j++;
 		}
+		*playerSpent = *playerSpent + temp;
 		return totalSpent;
 	}
+}
+
+Action* getActionList(Gametree *testnode)
+{
+	Action *actionList, *temp;
+	Gametree *tempnode;
+	int i = 0;
+	int j = 0;
+
+	tempnode = testnode;
+
+	if (getDegree(testnode) == 1)
+	{
+		actionList = NULL;
+		return actionList;
+	}
+	while (tempnode->parent)
+	{
+		(*(temp+i)).type = tempnode->nodeType;
+		i++;
+		tempnode = tempnode->parent;
+	}
+	i--;
+	for (j = 0; j <= i; j++)
+	{
+		(*(actionList + j)).type = (*(temp + i)).type;
+		i--;
+	}
+	return actionList;
 }
 
 DataType findMax(DataType x1, DataType x2, DataType x3)
@@ -365,7 +487,49 @@ DataType findMax(DataType x1, DataType x2, DataType x3)
 	return maxNo;
 }
 
-Action* decideAction(Gametree* thisGametree, Action* actionList)
+Action* decideAction(Gametree* thisGametree, Action* actionList, int actionNumber)
 {
 	//TODO: from the actionList, return the best action.
+	Action action;
+	Gametree* temptree = thisGametree;
+	int i = 0;
+	for(i = 0; i < actionNumber; i++)
+	{
+		if ((*(actionList+i)).type == 0)
+			temptree = temptree->fold;
+		else if ((*(actionList+i)).type == 1)
+			temptree = temptree->call;
+		else if ((*(actionList+i)).type == 2)
+			temptree = temptree->raise;
+	}
+	if (temptree->data == temptree->fold->data)
+		action.type = 0;
+	else if (temptree->data == temptree->call->data)
+		action.type = 1;
+	else
+		action.type = 2;
+	return &action;
+}
+
+
+//Naive functions for debugging
+DataType computeHandStrength(Game *game, State *state)
+{
+	DataType k = 0.45;
+	return k;
+}
+
+DataType winningProb(Game* game, State* state, DataType handStrength,int opponentID)
+{
+	return 0.2;
+}
+
+DataType* getOpponentaction(Game* game,State* state)
+{
+	DataType *opponentAction = (DataType *)malloc(sizeof(DataType *) * 3);
+	*opponentAction = 0.2;
+	*(opponentAction + 1) = 0.3;
+	*(opponentAction + 2) = 0.5;
+	return opponentAction;
+
 }

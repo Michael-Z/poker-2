@@ -11,6 +11,8 @@
 #include	<stdio.h>
 #include	<malloc.h>
 #include	"game.h"
+//need to modify rng.h as I did in VS2008, not sure if it is necessary in gcc
+
 
 //TODO: include necessary files for hand strength and opponent model
 //TODO: function needed: 
@@ -44,7 +46,7 @@ typedef struct Gametree
 
 Gametree* initTree(int numRaise);
 
-Gametree* constructTree(Game *game, State *state, int currentStage, int opponentID, int selfID);	
+Gametree* constructTree(Game *game, State *state, int opponentID, int selfID);	
 
 Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int numRaise, DataType handStrength, int opponentID, bool isFirst);
 
@@ -52,9 +54,19 @@ int getDegree(Gametree* testnode);
 
 int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, bool isFirst);
 
+Action* getActionList(Gametree *testnode);
+
 DataType findMax(DataType x1, DataType x2, DataType x3);
 
-Action* decideAction(Gametree* thisGametree, Action* actionList);
+Action* decideAction(Gametree* thisGametree, Action* actionList, int actionNumber);
+
+
+//Naive functions for debugging
+DataType computeHandStrength(Game *game, State *state);
+
+DataType winningProb(Game* game, State* state, DataType handStrength,int opponentID);
+
+DataType* getOpponentaction(Game* game,State* state);
 
 
 //from the actionList, return the best action
