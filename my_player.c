@@ -95,7 +95,7 @@ int main( int argc, char **argv )
   }
   fflush( toServer );
 
-  initModel();
+  initModel(game);
 
   while( fgets( line, MAX_LINE_LEN, fromServer ) ) {
 
@@ -115,9 +115,9 @@ int main( int argc, char **argv )
       /* ignore the game over message */
       /* debug */
       printf("Showdown message: %s", line);
-      updateModel((uint8_t)1-state.viewingPlayer, &state.state); /* pass oppoent position */
+      updateModel(game, (uint8_t)1-state.viewingPlayer, &state.state); /* pass oppoent position */
       #ifdef DEBUG
-	  printModel();
+	  printModel(game);
       #endif
       continue;
     }
