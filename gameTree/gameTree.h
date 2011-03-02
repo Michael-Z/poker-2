@@ -10,7 +10,8 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<malloc.h>
-#include	"game.h"
+#include	"../game.h"
+
 //need to modify rng.h as I did in VS2008, not sure if it is necessary in gcc
 
 
@@ -28,7 +29,6 @@
 //typedef struct GametreeNode Gametree;
 
 typedef float DataType;		//Basic datatype
-typedef int bool;
 
 typedef struct Gametree
 {			
@@ -48,17 +48,17 @@ Gametree* initTree(int numRaise);
 
 Gametree* constructTree(Game *game, State *state, int opponentID, int selfID);	
 
-Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int numRaise, DataType handStrength, int opponentID, bool isFirst);
+Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int numRaise, DataType handStrength, int opponentID, int isFirst);
 
 int getDegree(Gametree* testnode);
 
-int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, bool isFirst);
+int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, int isFirst);
 
 Action* getActionList(Gametree *testnode);
 
 DataType findMax(DataType x1, DataType x2, DataType x3);
 
-Action* decideAction(Gametree* thisGametree, Action* actionList, int actionNumber);
+void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, Action* action);
 
 
 //Naive functions for debugging

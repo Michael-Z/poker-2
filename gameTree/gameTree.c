@@ -5,26 +5,59 @@
 */
 
 #include "gameTree.h"
+#include "../handValue/handValue.h"
+#include "../opponent_model.h"
 
 #define MAXNODE 450		//larger than 243+81+...
 #define MAXDEGREE 6		//At most 6 depth tree
 
+OppBase flopsBase[MAX_ROUNDS];
 
+DataType winningProb(Game *game, State *state, int myHandStrength, int opponentID, int isFirst, Action* actionList, int actLen)
+{
+	int round = state->round;
+	int playerID = currentPlayer(game,state);
+	struct Node* node = getNode(actionList, actLen, round, playerID);
+	DataType winningP = 0;
+	int i = 0;
+	int total = 0;
+	for (;i<MAX_NUM_BUCKETS;i++)
+	{
+		total += node->data.bucket[i];
+	}
+	for (i=0;i<myHandStrength-1;i++)
+	{
+		winningP += node->data.bucket[i]/total;
+	}
+	return winningP;
+}
 
+DataType* getOpponentAction(Game *game, State *state, Action* actionList, int actLen)
+{
+	int round = state->round;
+	int playerID = currentPlayer(game,state);
+	struct Node* node = getNode(actionList, actLen, round, playerID);
+	DataType* action = (DataType*) malloc(sizeof(DataType)*3);
+	int total = node->data.actionDist.fCnt + node->data.actionDist.cCnt + node->data.actionDist.rCnt;
+	action[0] = ((float)node->data.actionDist.fCnt)/total;
+	action[1] = ((float)node->data.actionDist.cCnt)/total;
+	action[2] = ((float)node->data.actionDist.rCnt)/total;
+	return action;
+}
 Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)		
 //Construct a game tree in certain stages. If the current stage does not change, we can always determine next action with this tree
 {
 	uint8_t currentRound;		//current round
 	uint8_t numRaise;		//number of raises allowed in this game
-	DataType handStrength;
-	bool isFirst = 0;
+	int handStrength;
+	int isFirst = 0;
 	Gametree *thisGametree;
 
 	
 	currentRound = state->round;
 	numRaise = game->maxRaises[currentRound];
 	thisGametree = initTree(numRaise);
-	handStrength = computeHandStrength(game,state);
+	handStrength = computeHandStrength(state,selfID);
 	if ((int)(game->firstPlayer[currentRound]) == selfID)
 		isFirst = 1;
 
@@ -209,7 +242,7 @@ Gametree* initTree(int numRaise)
 	return rootnode;
 }
 
-Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int numRaise, DataType handStrength, int opponentID, bool isFirst)
+Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int numRaise, DataType handStrength, int opponentID, int isFirst)
 //Give all the values in the tree
 {
 	int nodeDegree;											//the degree of certain node
@@ -265,14 +298,22 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 				if (nodeindex[i]->nodeType == 0)	//a fold node
 					nodeindex[i]->data = 0 - playerSpent;
 				if (nodeindex[i]->nodeType == 1)	//After two calls
-					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID)*totalSpent-playerSpent;
+				{
+					Action* actionList = getActionList(nodeindex[i]);
+					int actLen = getDegree(nodeindex[i])-1;
+					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, isFirst, actionList,actLen)*totalSpent-playerSpent;
+				}
 			}
 			else								//B's move
 			{
 				if (nodeindex[i]->nodeType == 0)	//a fold node
 					nodeindex[i]->data = totalSpent - playerSpent;
 				if (nodeindex[i]->nodeType == 1)	//After two calls
-					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID)*totalSpent-playerSpent;
+				{
+					Action* actionList = getActionList(nodeindex[i]);
+					int actLen = getDegree(nodeindex[i])-1;
+					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID,isFirst,actionList,actLen)*totalSpent-playerSpent;
+				}
 			}
 		}
 	}
@@ -290,7 +331,9 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 				nodeindex[i]->parent->data = findMax(nodeindex[i]->data,nodeindex[i-1]->data,nodeindex[i-2]->data);
 			else
 			{
-				opponentAction=getOpponentaction(game,state);
+				Action* actionList = getActionList(nodeindex[i]->parent);
+				int actLen = getDegree(nodeindex[i]->parent)-1;
+				opponentAction=getOpponentAction(game,state,actionList,actLen);
 				nodeindex[i]->parent->data = (*(opponentAction+2)) * nodeindex[i]->data + (*(opponentAction+1)) * nodeindex[i-1]->data + (*opponentAction) * nodeindex[i-2]->data;
 			}
 			i -= 3;
@@ -302,7 +345,9 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 				nodeindex[i]->parent->data = ((nodeindex[i]->data) > (nodeindex[i-1]->data)) ? (nodeindex[i]->data) :(nodeindex[i]->data);
 			else
 			{
-				opponentAction=getOpponentaction(game,state);
+				Action* actionList = getActionList(nodeindex[i]->parent);
+				int actLen = getDegree(nodeindex[i]->parent)-1;
+				opponentAction=getOpponentAction(game,state,actionList,actLen);
 				nodeindex[i]->parent->data = (*(opponentAction+1)) * nodeindex[i]->data + (*(opponentAction)) * nodeindex[i-1]->data;
 			}
 			i -= 2;
@@ -329,7 +374,7 @@ int getDegree(Gametree* testnode)				//return the degree of any node, root node 
 	}
 }
 
-int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, bool isFirst)
+int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, int isFirst)
 {
 	int totalSpent = state->spent[0]+state->spent[1];				//Chips already in the pot, TWO PLAYERS ONLY!
 	int currentCall = 0;											//Like check, no more chips needed to check
@@ -489,10 +534,9 @@ DataType findMax(DataType x1, DataType x2, DataType x3)
 	return maxNo;
 }
 
-Action* decideAction(Gametree* thisGametree, Action* actionList, int actionNumber)
+void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, Action* action)
 {
 	//TODO: from the actionList, return the best action.
-	Action action;
 	Gametree* temptree = thisGametree;
 	int i = 0;
 	for(i = 0; i < actionNumber; i++)
@@ -505,12 +549,11 @@ Action* decideAction(Gametree* thisGametree, Action* actionList, int actionNumbe
 			temptree = temptree->raise;
 	}
 	if (temptree->data == temptree->fold->data)
-		action.type = 0;
+		action->type = 0;
 	else if (temptree->data == temptree->call->data)
-		action.type = 1;
+		action->type = 1;
 	else
-		action.type = 2;
-	return &action;
+		action->type = 2;
 }
 
 

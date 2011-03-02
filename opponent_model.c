@@ -5,7 +5,7 @@
 
 * Creation Date : 26-02-2011
 
-* Last Modified : Tue 01 Mar 2011 08:39:59 PM EST
+* Last Modified : Wed 02 Mar 2011 05:39:06 PM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
@@ -23,13 +23,10 @@
 #include <getopt.h>
 #include "game.h"
 #include "opponent_model.h"
+#include "handValue/handValue.h"
 
 	
 OppBase flopsBase[MAX_ROUNDS];
-
-unsigned calcStrength() {
-	return 1;
-}
 
 /* ========= All the following functions are now only for two people, limit game =================*/
 void initNode(struct Node* node, enum NodeType type)
@@ -185,7 +182,7 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 				}
 		}
 		else {
-			unsigned idx = calcStrength();
+			unsigned idx = computeHandStrength(state,pos);
 			pt->data.bucket[idx] ++;
 			switch (localActionList[k].type) { /* update strength info */
 				case fold:

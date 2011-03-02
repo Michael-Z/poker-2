@@ -5,7 +5,7 @@
 
 * Creation Date :
 
-* Last Modified : Tue 01 Mar 2011 08:15:37 PM EST
+* Last Modified : Wed 02 Mar 2011 05:03:34 PM EST
 
 * Created By :
 
@@ -127,7 +127,7 @@ static int isCardChoiceLegal(int rank, int suite, Card* myCards, int maxNumberOf
 	return 0;
 }
 
-int computeHandValue(Game *game, State *state, int currentPlayer, int min, int max)
+int computeHandStrength(State *state, int currentPlayer)
 {
 	int bucket = 0;				//final return value
 	int i = 0;					//loop vars

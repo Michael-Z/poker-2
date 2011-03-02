@@ -5,12 +5,12 @@
 
 * Creation Date : 23-02-2011
 
-* Last Modified : Tue 01 Mar 2011 07:03:12 PM EST
+* Last Modified : Wed 02 Mar 2011 05:13:51 PM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
 */
-#define MAX_NUM_BUCKETS 128
+#define MAX_NUM_BUCKETS 5
 
 typedef enum {false = 0, true = 1} bool;
 enum NodeType {null = 0, strength = 1, prob = 2}; 

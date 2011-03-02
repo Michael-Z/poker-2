@@ -14,7 +14,8 @@ Copyright (C) 2011 by the Computer Poker Research Group, University of Alberta
 #include <getopt.h>
 #include "game.h"
 #include "opponent_model.h"
-
+#include "gameTree/gameTree.h"
+#include "handValue/handValue.h"
 
 int main( int argc, char **argv )
 {
@@ -28,8 +29,10 @@ int main( int argc, char **argv )
   struct hostent *hostent;
   FILE *file, *toServer, *fromServer;
   char line[ MAX_LINE_LEN ];
-
-  if( argc < 4 ) {
+  int actLen;
+  Action* actionList;
+  Gametree* gTree;
+    if( argc < 4 ) {
 
     fprintf( stderr, "usage: player game server port\n" );
     exit( EXIT_FAILURE );
@@ -96,9 +99,13 @@ int main( int argc, char **argv )
   fflush( toServer );
 
   initModel(game);
+  
+  int previous_round = 1;
 
   while( fgets( line, MAX_LINE_LEN, fromServer ) ) {
-
+	
+	if (state.state.round != previous_round) gTree = constructTree(game,&state.state, 1-currentPlayer(game, &state.state), currentPlayer(game, &state.state));
+	previous_round = state.state.round;
     /* ignore comments */
     if( line[ 0 ] == '#' || line[ 0 ] == ';' ) {
       continue;
@@ -131,18 +138,18 @@ int main( int argc, char **argv )
     /* add a colon (guaranteed to fit because we read a new-line in fgets) */
     line[ len ] = ':';
     ++len;
+	actLen = state.state.numActions[state.state.round];		//starting with 1
+	int i;
+	for (i=0;i<actLen;i++)
+	{
+		(*(actionList+i)).type = state.state.actingPlayer[state.state.round][i];
+	}
+	Action* todo;
 
-    if( ( random() % 2 ) && raiseIsValid( game, &state.state, &min, &max ) ) {
-      /* raise */
+	decideAction(gTree, actionList, actLen, todo);
 
-      action.type = raise;
-      action.size = min + random() % ( max - min + 1 );
-    } else {
-      /* call */
-
-      action.type = call;
-      action.size = 0;
-    }
+	action.type = todo->type;
+    action.size = min + random() % ( max - min + 1 );
 
     if( !isValidAction( game, &state.state, 0, &action ) ) {
 
