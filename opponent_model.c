@@ -5,7 +5,7 @@
 
 * Creation Date : 26-02-2011
 
-* Last Modified : Wed 02 Mar 2011 05:39:06 PM EST
+* Last Modified : Thu 03 Mar 2011 05:05:54 PM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
@@ -65,7 +65,7 @@ struct Node* initBase(OppBase *base, bool isPlayFirst)
 void initModel(Game *game)
 {
 	int i;
-	for (i=0; i<game->numRounds; i++) {
+	for (i=0; i<MAX_ROUNDS; i++) {
 		flopsBase[i].dealerRoot = NULL;
 		flopsBase[i].nonDealerRoot = NULL;
 	}
@@ -258,6 +258,8 @@ struct Node *getNode(Action *act, uint8_t actLen, uint8_t round, uint8_t pos)
 	}
 		
 	for(i=0; i<actLen; i++) {
+		if (NULL == node) return NULL;
+
 		switch ( act[i].type ) {
 		case fold:
 			node = node->leftChild;
@@ -301,6 +303,7 @@ void printNode(struct Node *node)
 	if (NULL == node) return;
 
 	fprintf(stdout, "Betting: ");
+	fflush(stdout);
 	int i;
 	for(i=0; i<node->actionNum; i++) {
 		switch(node->actionList[i]) 
@@ -317,7 +320,7 @@ void printNode(struct Node *node)
 			case invalid:
 				break;
 			default:
-				fprintf(stderr, "printNode: invalid action\n");
+				fprintf(stderr, "printNode: invalid action %d\n", node->actionList[i]);
 				exit(EXIT_FAILURE);
 				break;
 			}
@@ -328,7 +331,10 @@ void printNode(struct Node *node)
 		fprintf(stdout, "strength: %d\n", node->data.bucket[0]);
 		}
 	else {
-		fprintf(stdout, "flop rate: %d\t, call rate: %d\t, raise rate: %d\n", node->data.actionDist.fCnt, node->data.actionDist.cCnt, node->data.actionDist.rCnt);
+		fprintf(stdout, "flop rate: %d\t, call rate: %d\t, raise rate: %d\n", 
+				node->data.actionDist.fCnt, 
+				node->data.actionDist.cCnt, 
+				node->data.actionDist.rCnt);
 		}
 	printNode(node->leftChild);
 	printNode(node->midChild);

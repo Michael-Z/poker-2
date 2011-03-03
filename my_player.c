@@ -17,6 +17,8 @@ Copyright (C) 2011 by the Computer Poker Research Group, University of Alberta
 #include "gameTree/gameTree.h"
 #include "handValue/handValue.h"
 
+#define MAXDEGREE 6
+
 int main( int argc, char **argv )
 {
   int sock, len, r;
@@ -30,7 +32,7 @@ int main( int argc, char **argv )
   FILE *file, *toServer, *fromServer;
   char line[ MAX_LINE_LEN ];
   int actLen;
-  Action* actionList;
+  Action actionList[MAXDEGREE];
   Gametree* gTree;
     if( argc < 4 ) {
 
@@ -102,16 +104,22 @@ int main( int argc, char **argv )
   
   int previous_round = 1;
 
+  int game_played = 0;
+  int finishOnce = 0;
   while( fgets( line, MAX_LINE_LEN, fromServer ) ) {
 	
-	if (state.state.round != previous_round) gTree = constructTree(game,&state.state, 1-currentPlayer(game, &state.state), currentPlayer(game, &state.state));
-	previous_round = state.state.round;
     /* ignore comments */
     if( line[ 0 ] == '#' || line[ 0 ] == ';' ) {
       continue;
     }
 
     len = readMatchState( line, game, &state );
+	if ((game_played >= 10) && (finishOnce || (state.state.round != previous_round))) 
+	{
+		gTree = constructTree(game,&state.state, 1-currentPlayer(game, &state.state), currentPlayer(game, &state.state));
+	previous_round = state.state.round;
+		finishOnce = 0;
+	}
     if( len < 0 ) {
 
       fprintf( stderr, "ERROR: could not read state %s", line );
@@ -126,7 +134,9 @@ int main( int argc, char **argv )
       #ifdef DEBUG
 	  printModel(game);
       #endif
-      continue;
+	  game_played ++;
+      finishOnce = 1;
+	  continue;
     }
 
     if( currentPlayer( game, &state.state ) != state.viewingPlayer ) {
@@ -138,18 +148,33 @@ int main( int argc, char **argv )
     /* add a colon (guaranteed to fit because we read a new-line in fgets) */
     line[ len ] = ':';
     ++len;
+	if (game_played >= 10) {
 	actLen = state.state.numActions[state.state.round];		//starting with 1
 	int i;
 	for (i=0;i<actLen;i++)
 	{
-		(*(actionList+i)).type = state.state.actingPlayer[state.state.round][i];
+		actionList[i].type = state.state.action[state.state.round][i].type;
 	}
-	Action* todo;
+	Action* todo = (Action *)malloc(sizeof(Action));
 
 	decideAction(gTree, actionList, actLen, todo);
 
 	action.type = todo->type;
     action.size = min + random() % ( max - min + 1 );
+	}
+	else {
+    	if( ( random() % 2 ) && raiseIsValid( game, &state.state, &min, &max ) ) {
+      /* raise */
+    //if ((IHS > 0.6) && raiseIsValid(game, &state.state, &min, &max)) {  
+	  	action.type = raise;
+	      action.size = min + random() % ( max - min + 1 );
+   	 } 
+		else {
+      /* call */
+	      action.type = call;
+   		  action.size = 0;
+	    }
+	}
 
     if( !isValidAction( game, &state.state, 0, &action ) ) {
 

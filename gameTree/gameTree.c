@@ -18,6 +18,10 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 	int round = state->round;
 	int playerID = currentPlayer(game,state);
 	struct Node* node = getNode(actionList, actLen, round, playerID);
+	if (!node)
+	{
+		return 0.5;
+	}
 	DataType winningP = 0;
 	int i = 0;
 	int total = 0;
@@ -27,6 +31,10 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 	}
 	for (i=0;i<myHandStrength-1;i++)
 	{
+		if (total == 0)
+		{
+			return 0.5;
+		}
 		winningP += node->data.bucket[i]/total;
 	}
 	return winningP;
@@ -38,7 +46,21 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 	int playerID = currentPlayer(game,state);
 	struct Node* node = getNode(actionList, actLen, round, playerID);
 	DataType* action = (DataType*) malloc(sizeof(DataType)*3);
+	if (!node)
+	{
+		action[0] = 0.33;
+		action[1] = 0.33;
+		action[2] = 0.33;
+		return action;
+	}
 	int total = node->data.actionDist.fCnt + node->data.actionDist.cCnt + node->data.actionDist.rCnt;
+	if (total == 0)
+	{
+		action[0] = 0.33;
+		action[1] = 0.33;
+		action[2] = 0.33;
+		
+	}
 	action[0] = ((float)node->data.actionDist.fCnt)/total;
 	action[1] = ((float)node->data.actionDist.cCnt)/total;
 	action[2] = ((float)node->data.actionDist.rCnt)/total;
@@ -70,7 +92,7 @@ Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)
 void main()
 {
 
-	Gametree* ok = (Gametree *)malloc(sizeof(Gametree *));
+	Gametree* ok = (Gametree *)malloc(sizeof(Gametree));
 
 	Game testgame;
 	State teststate;
@@ -109,9 +131,6 @@ Gametree* initTree(int numRaise)
 //Generate the structure of the tree
 {
 	//First generate a full tree and then cut it to the gametree.
-	int raisenumber = 0;
-
-
 
 	//---------------------------------------------------------------------------------------
 	//NOTICE: Current logic about the depth of the tree:
@@ -127,7 +146,7 @@ Gametree* initTree(int numRaise)
 	int i = 0;
 	int j = 0;
 	int temprear = rear;
-	Gametree* rootnode = (Gametree *)malloc(sizeof(Gametree *));	
+	Gametree* rootnode = (Gametree *)malloc(sizeof(Gametree));	
 	Gametree* temp;
 	
 	Gametree *nodeindex[MAXNODE];
@@ -147,9 +166,9 @@ Gametree* initTree(int numRaise)
 	{
 		while (front < rear)
 		{
-			Gametree* foldnode = (Gametree *)malloc(sizeof(Gametree *));
-			Gametree* callnode = (Gametree *)malloc(sizeof(Gametree *));
-			Gametree* raisenode = (Gametree *)malloc(sizeof(Gametree *));
+			Gametree* foldnode = (Gametree *)malloc(sizeof(Gametree));
+			Gametree* callnode = (Gametree *)malloc(sizeof(Gametree));
+			Gametree* raisenode = (Gametree *)malloc(sizeof(Gametree));
 
 			foldnode->data = 0;
 			foldnode->nodeType = 0;
@@ -500,7 +519,8 @@ int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpe
 
 Action* getActionList(Gametree *testnode)
 {
-	Action *actionList, *temp;
+	Action *actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+	Action *temp = (Action *)malloc(sizeof(Action)*MAXDEGREE);
 	Gametree *tempnode;
 	int i = 0;
 	int j = 0;
@@ -539,6 +559,8 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, 
 	//TODO: from the actionList, return the best action.
 	Gametree* temptree = thisGametree;
 	int i = 0;
+	if (actionNumber)
+	{
 	for(i = 0; i < actionNumber; i++)
 	{
 		if ((*(actionList+i)).type == 0)
@@ -547,6 +569,7 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, 
 			temptree = temptree->call;
 		else if ((*(actionList+i)).type == 2)
 			temptree = temptree->raise;
+	}
 	}
 	if (temptree->data == temptree->fold->data)
 		action->type = 0;
