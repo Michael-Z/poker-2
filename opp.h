@@ -1,11 +1,11 @@
 /*
-* File Name : opponent_model.h
+* File Name : opp.h
 
 * Purpose :
 
 * Creation Date : 23-02-2011
 
-* Last Modified : Wed 02 Mar 2011 05:13:51 PM EST
+* Last Modified : Fri 04 Mar 2011 05:45:37 PM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
@@ -15,28 +15,25 @@
 typedef enum {false = 0, true = 1} bool;
 enum NodeType {null = 0, strength = 1, prob = 2}; 
 
-typedef struct {
-	unsigned fCnt;
-	unsigned cCnt;
-	unsigned rCnt;
-} ActionDist;
-
 
 typedef unsigned Bucket;
 
 struct Node {
 	enum NodeType type;
 	union {
-		ActionDist actionDist;
+		unsigned actionDist[3];
 		Bucket bucket[MAX_NUM_BUCKETS];
 	} data;
 #ifdef DEBUG 
 	enum ActionType actionList[MAX_NUM_ACTIONS];	
 	uint8_t actionNum;
 #endif 
-	struct Node *leftChild;
-	struct Node *midChild;
-	struct Node *rightChild;
+
+#ifdef NODEPAR
+	struct Node *parent;
+#endif
+
+	struct Node *child[3];
 };
 		
 

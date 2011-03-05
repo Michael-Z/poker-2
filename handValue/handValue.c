@@ -129,7 +129,7 @@ static int isCardChoiceLegal(int rank, int suite, Card* myCards, int maxNumberOf
 
 int computeHandStrength(State *state, int currentPlayer)
 {
-	int bucket = 0;				//final return value
+	unsigned bucket = 0;				//final return value
 	int i = 0;					//loop vars
 	int j = 0;
 	int k = 0;

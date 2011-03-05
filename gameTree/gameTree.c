@@ -6,17 +6,15 @@
 
 #include "gameTree.h"
 #include "../handValue/handValue.h"
-#include "../opponent_model.h"
+#include "../opp.h"
 
 #define MAXNODE 450		//larger than 243+81+...
 #define MAXDEGREE 6		//At most 6 depth tree
 
-OppBase flopsBase[MAX_ROUNDS];
-
 DataType winningProb(Game *game, State *state, int myHandStrength, int opponentID, int isFirst, Action* actionList, int actLen)
 {
-	int round = state->round;
-	int playerID = currentPlayer(game,state);
+	uint8_t round = state->round;
+	uint8_t playerID = currentPlayer(game,state);
 	struct Node* node = getNode(actionList, actLen, round, playerID);
 	if (!node)
 	{
@@ -24,8 +22,8 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 	}
 	DataType winningP = 0;
 	int i = 0;
-	int total = 0;
-	for (;i<MAX_NUM_BUCKETS;i++)
+	Bucket total = 0;
+	for (; i<MAX_NUM_BUCKETS; i++)
 	{
 		total += node->data.bucket[i];
 	}
@@ -35,7 +33,7 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 		{
 			return 0.5;
 		}
-		winningP += node->data.bucket[i]/total;
+		winningP += (node->data.bucket[i])/(double)total;
 	}
 	return winningP;
 }
@@ -45,6 +43,8 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 	int round = state->round;
 	int playerID = currentPlayer(game,state);
 	struct Node* node = getNode(actionList, actLen, round, playerID);
+	unsigned total = 0;
+	int i;
 	DataType* action = (DataType*) malloc(sizeof(DataType)*3);
 	if (!node)
 	{
@@ -53,17 +53,19 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 		action[2] = 0.33;
 		return action;
 	}
-	int total = node->data.actionDist.fCnt + node->data.actionDist.cCnt + node->data.actionDist.rCnt;
+	for(i=0; i<3; i++)
+		total += node->data.actionDist[i];
 	if (total == 0)
 	{
 		action[0] = 0.33;
 		action[1] = 0.33;
 		action[2] = 0.33;
+		return action;
 		
 	}
-	action[0] = ((float)node->data.actionDist.fCnt)/total;
-	action[1] = ((float)node->data.actionDist.cCnt)/total;
-	action[2] = ((float)node->data.actionDist.rCnt)/total;
+	for(i=0; i<3; i++)
+		action[i] = (node->data.actionDist[i])/total;
+
 	return action;
 }
 Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)		
