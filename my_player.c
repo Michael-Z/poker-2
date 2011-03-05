@@ -13,7 +13,7 @@ Copyright (C) 2011 by the Computer Poker Research Group, University of Alberta
 #include <netinet/tcp.h>
 #include <getopt.h>
 #include "game.h"
-#include "opponent_model.h"
+#include "opp.h"
 #include "gameTree/gameTree.h"
 #include "handValue/handValue.h"
 
@@ -150,7 +150,7 @@ int main( int argc, char **argv )
     /* add a colon (guaranteed to fit because we read a new-line in fgets) */
     line[ len ] = ':';
     ++len;
-	if (game_played >= 10) {
+	if (game_played >= 100) {
 	actLen = state.state.numActions[state.state.round];		//starting with 1
 	int i;
 	for (i=0;i<actLen;i++)
