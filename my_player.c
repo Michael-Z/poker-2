@@ -165,12 +165,13 @@ int main( int argc, char **argv )
     action.size = min + random() % ( max - min + 1 );
 	}
 	else {
+		action.type = fold;
     	if( ( random() % 2 ) && raiseIsValid( game, &state.state, &min, &max ) ) {
       /* raise */
     //if ((IHS > 0.6) && raiseIsValid(game, &state.state, &min, &max)) {  
 	  	action.type = raise;
 	      action.size = min + random() % ( max - min + 1 );
-   	 } 
+    } 
 		else {
       /* call */
 	      action.type = call;

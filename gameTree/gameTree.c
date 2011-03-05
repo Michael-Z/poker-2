@@ -18,6 +18,7 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 	struct Node* node = getNode(actionList, actLen, round, playerID);
 	if (!node)
 	{
+		fprintf(stderr,"\n A default 0.5 value is used to compute winning prob (node is NULL)\n");
 		return 0.5;
 	}
 	DataType winningP = 0;
@@ -31,6 +32,7 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 	{
 		if (total == 0)
 		{
+			fprintf(stderr, "\n A default 0.5 value is used to compute winning Prob (total == 0)\n");
 			return 0.5;
 		}
 		winningP += (node->data.bucket[i])/(double)total;
@@ -48,6 +50,7 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 	DataType* action = (DataType*) malloc(sizeof(DataType)*3);
 	if (!node)
 	{
+		fprintf(stderr,"\n A default 0.33 value for actions is used to compute action Prob (node is NULL)\n");
 		action[0] = 0.33;
 		action[1] = 0.33;
 		action[2] = 0.33;
@@ -57,6 +60,7 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 		total += node->data.actionDist[i];
 	if (total == 0)
 	{
+		fprintf(stderr,"\n A default 0.33 value for actions is used to compute action Prob (total == 0)\n");
 		action[0] = 0.33;
 		action[1] = 0.33;
 		action[2] = 0.33;
@@ -561,6 +565,12 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, 
 	//TODO: from the actionList, return the best action.
 	Gametree* temptree = thisGametree;
 	int i = 0;
+	fprintf(stderr,"\n Use decideAction: length: %d ",actionNumber);
+	for (i = 0; i<actionNumber; i++)
+	{
+		fprintf(stderr,"%d ",(*(actionList+i)).type);
+		}
+		fprintf(stderr,"\n");
 	if (actionNumber)
 	{
 	for(i = 0; i < actionNumber; i++)
@@ -577,8 +587,10 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, 
 		action->type = 0;
 	else if (temptree->data == temptree->call->data)
 		action->type = 1;
-	else
+	else if (temptree->data == temptree->raise->data)
 		action->type = 2;
+	else
+		fprintf(stderr,"\nWRONG decideAction call\n");
 }
 
 
