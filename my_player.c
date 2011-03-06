@@ -125,9 +125,12 @@ int main( int argc, char **argv )
       fprintf( stderr, "ERROR: could not read state %s", line );
       exit( EXIT_FAILURE );
     }
-
-	fprintf(stderr, "playerid %d, FILE %s\t LINE %d\n",state.viewingPlayer, __FILE__, __LINE__);
-
+	
+	fprintf(stderr, "round: %d\t first player id: %d\t, viewingplayer id: %d\n", 
+					state.state.round, 
+					game->firstPlayer[state.state.round], 
+					state.viewingPlayer);
+	
     if( stateFinished( &state.state ) ) {
       /* ignore the game over message */
       /* debug */

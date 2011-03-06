@@ -11,13 +11,21 @@
 #define MAXNODE 450		//larger than 243+81+...
 #define MAXDEGREE 6		//At most 6 depth tree
 
-DataType winningProb(Game *game, State *state, int myHandStrength, int opponentID, int isFirst, Action* actionList, int actLen)
+DataType winningProb(Game *game, State *state, int myHandStrength, 
+			int opponentID, Action* actionList, int actLen)
 {
 	uint8_t round = state->round;
-	uint8_t playerID = currentPlayer(game,state);
-	struct Node* node = getNode(actionList, actLen, round, playerID);
+	//uint8_t playerID = currentPlayer(game,state);
+	struct Node* node = getNode(actionList, actLen, round, opponentID);
 	if (!node)
 	{
+		fprintf(stderr, "%s:%d\t Warning: getNode return NULL\n", __FILE__, __LINE__);
+		int i;
+		fprintf(stderr, "actionList(%d):\t", actLen);
+		for(i=0; i<actLen; i++) {
+			fprintf(stderr, "%d", actionList[i].type);
+			}
+		fprintf(stderr, "\n");
 		return 0.5;
 	}
 	DataType winningP = 0;
@@ -38,16 +46,23 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 	return winningP;
 }
 
-DataType* getOpponentAction(Game *game, State *state, Action* actionList, int actLen)
+DataType* getOpponentAction(Game *game, State *state, Action* actionList, int actLen, uint8_t opponentID)
 {
 	int round = state->round;
-	int playerID = currentPlayer(game,state);
-	struct Node* node = getNode(actionList, actLen, round, playerID);
+	//int playerID = currentPlayer(game,state);
+	struct Node* node = getNode(actionList, actLen, round, opponentID);
 	unsigned total = 0;
 	int i;
 	DataType* action = (DataType*) malloc(sizeof(DataType)*3);
 	if (!node)
 	{
+		fprintf(stderr, "%s:%d\t Warning: getNode return NULL\n", __FILE__, __LINE__);
+		int i;
+		fprintf(stderr, "actionList(%d):\t", actLen);
+		for(i=0; i<actLen; i++) {
+			fprintf(stderr, "%d", actionList[i].type);
+			}
+		fprintf(stderr, "\n");
 		action[0] = 0.33;
 		action[1] = 0.33;
 		action[2] = 0.33;
@@ -263,7 +278,10 @@ Gametree* initTree(int numRaise)
 	return rootnode;
 }
 
-Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int numRaise, DataType handStrength, int opponentID, int isFirst)
+Gametree* computeTreevalue(Game* game, State* state, 
+									Gametree* emptyTree, int numRaise, 
+									DataType handStrength, int opponentID, 
+									int isFirst)
 //Give all the values in the tree
 {
 	int nodeDegree;											//the degree of certain node
@@ -322,7 +340,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 				{
 					Action* actionList = getActionList(nodeindex[i]);
 					int actLen = getDegree(nodeindex[i])-1;
-					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, isFirst, actionList,actLen)*totalSpent-playerSpent;
+					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, actionList,actLen)*totalSpent-playerSpent;
 				}
 			}
 			else								//B's move
@@ -333,7 +351,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 				{
 					Action* actionList = getActionList(nodeindex[i]);
 					int actLen = getDegree(nodeindex[i])-1;
-					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID,isFirst,actionList,actLen)*totalSpent-playerSpent;
+					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID ,actionList,actLen)*totalSpent-playerSpent;
 				}
 			}
 		}
@@ -354,7 +372,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 			{
 				Action* actionList = getActionList(nodeindex[i]->parent);
 				int actLen = getDegree(nodeindex[i]->parent)-1;
-				opponentAction=getOpponentAction(game,state,actionList,actLen);
+				opponentAction=getOpponentAction(game,state,actionList,actLen,opponentID);
 				nodeindex[i]->parent->data = (*(opponentAction+2)) * nodeindex[i]->data + (*(opponentAction+1)) * nodeindex[i-1]->data + (*opponentAction) * nodeindex[i-2]->data;
 			}
 			i -= 3;
@@ -368,7 +386,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 			{
 				Action* actionList = getActionList(nodeindex[i]->parent);
 				int actLen = getDegree(nodeindex[i]->parent)-1;
-				opponentAction=getOpponentAction(game,state,actionList,actLen);
+				opponentAction=getOpponentAction(game,state,actionList,actLen,opponentID);
 				nodeindex[i]->parent->data = (*(opponentAction+1)) * nodeindex[i]->data + (*(opponentAction)) * nodeindex[i-1]->data;
 			}
 			i -= 2;
