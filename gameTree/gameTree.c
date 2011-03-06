@@ -26,6 +26,7 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 			fprintf(stderr, "%d", actionList[i].type);
 			}
 		fprintf(stderr, "\n");
+
 		return 0.5;
 	}
 	DataType winningP = 0;
@@ -39,6 +40,7 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 	{
 		if (total == 0)
 		{
+			fprintf(stderr, "\n A default 0.5 value is used to compute winning Prob (total == 0)\n");
 			return 0.5;
 		}
 		winningP += (node->data.bucket[i])/(double)total;
@@ -72,6 +74,7 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 		total += node->data.actionDist[i];
 	if (total == 0)
 	{
+		fprintf(stderr,"\n A default 0.33 value for actions is used to compute action Prob (total == 0)\n");
 		action[0] = 0.33;
 		action[1] = 0.33;
 		action[2] = 0.33;
@@ -338,7 +341,9 @@ Gametree* computeTreevalue(Game* game, State* state,
 					nodeindex[i]->data = 0 - playerSpent;
 				if (nodeindex[i]->nodeType == 1)	//After two calls
 				{
-					Action* actionList = getActionList(nodeindex[i]);
+					//Action* actionList = getActionList(nodeindex[i]);
+					Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+					getActionList(nodeindex[i],actionList);
 					int actLen = getDegree(nodeindex[i])-1;
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, actionList,actLen)*totalSpent-playerSpent;
 				}
@@ -349,7 +354,9 @@ Gametree* computeTreevalue(Game* game, State* state,
 					nodeindex[i]->data = totalSpent - playerSpent;
 				if (nodeindex[i]->nodeType == 1)	//After two calls
 				{
-					Action* actionList = getActionList(nodeindex[i]);
+					//Action* actionList = getActionList(nodeindex[i]);
+					Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+					getActionList(nodeindex[i],actionList);
 					int actLen = getDegree(nodeindex[i])-1;
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID ,actionList,actLen)*totalSpent-playerSpent;
 				}
@@ -370,7 +377,9 @@ Gametree* computeTreevalue(Game* game, State* state,
 				nodeindex[i]->parent->data = findMax(nodeindex[i]->data,nodeindex[i-1]->data,nodeindex[i-2]->data);
 			else
 			{
-				Action* actionList = getActionList(nodeindex[i]->parent);
+				//Action* actionList = getActionList(nodeindex[i]->parent);
+				Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+				getActionList(nodeindex[i]->parent,actionList);
 				int actLen = getDegree(nodeindex[i]->parent)-1;
 				opponentAction=getOpponentAction(game,state,actionList,actLen,opponentID);
 				nodeindex[i]->parent->data = (*(opponentAction+2)) * nodeindex[i]->data + (*(opponentAction+1)) * nodeindex[i-1]->data + (*opponentAction) * nodeindex[i-2]->data;
@@ -384,7 +393,8 @@ Gametree* computeTreevalue(Game* game, State* state,
 				nodeindex[i]->parent->data = ((nodeindex[i]->data) > (nodeindex[i-1]->data)) ? (nodeindex[i]->data) :(nodeindex[i]->data);
 			else
 			{
-				Action* actionList = getActionList(nodeindex[i]->parent);
+				Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+				getActionList(nodeindex[i]->parent,actionList);
 				int actLen = getDegree(nodeindex[i]->parent)-1;
 				opponentAction=getOpponentAction(game,state,actionList,actLen,opponentID);
 				nodeindex[i]->parent->data = (*(opponentAction+1)) * nodeindex[i]->data + (*(opponentAction)) * nodeindex[i-1]->data;
@@ -537,9 +547,9 @@ int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpe
 	}
 }
 
-Action* getActionList(Gametree *testnode)
+void getActionList(Gametree *testnode, Action *actionList)
 {
-	Action *actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+	//Action *actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
 	Action *temp = (Action *)malloc(sizeof(Action)*MAXDEGREE);
 	Gametree *tempnode;
 	int i = 0;
@@ -550,21 +560,26 @@ Action* getActionList(Gametree *testnode)
 	if (getDegree(testnode) == 1)
 	{
 		actionList = NULL;
-		return actionList;
+		//return actionList;
 	}
+	fprintf(stderr,"\nDebug:");
 	while (tempnode->parent)
 	{
 		(*(temp+i)).type = tempnode->nodeType;
+		fprintf(stderr,"%d ", tempnode->nodeType);
 		i++;
 		tempnode = tempnode->parent;
 	}
 	i--;
-	for (j = 0; j <= i; j++)
+	int tempi = i;
+	fprintf(stderr,"\ncompare:%d %d",i,getDegree(testnode) - 1);
+	for (j = 0; j <= tempi; j++)
 	{
 		(*(actionList + j)).type = (*(temp + i)).type;
+		fprintf(stderr,"\nAfterdebug: %d",(*(temp+i)).type);
 		i--;
 	}
-	return actionList;
+	//return actionList;
 }
 
 DataType findMax(DataType x1, DataType x2, DataType x3)
@@ -579,6 +594,12 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, 
 	//TODO: from the actionList, return the best action.
 	Gametree* temptree = thisGametree;
 	int i = 0;
+	fprintf(stderr,"\n Use decideAction: length: %d ",actionNumber);
+	for (i = 0; i<actionNumber; i++)
+	{
+		fprintf(stderr,"%d ",(*(actionList+i)).type);
+		}
+		fprintf(stderr,"\n");
 	if (actionNumber)
 	{
 	for(i = 0; i < actionNumber; i++)
@@ -595,8 +616,10 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, 
 		action->type = 0;
 	else if (temptree->data == temptree->call->data)
 		action->type = 1;
-	else
+	else if (temptree->data == temptree->raise->data)
 		action->type = 2;
+	else
+		fprintf(stderr,"\nWRONG decideAction call\n");
 }
 
 

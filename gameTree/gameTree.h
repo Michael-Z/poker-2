@@ -54,7 +54,7 @@ int getDegree(Gametree* testnode);
 
 int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, int isFirst);
 
-Action* getActionList(Gametree *testnode);
+void getActionList(Gametree *testnode, Action* actionList);
 
 DataType findMax(DataType x1, DataType x2, DataType x3);
 
