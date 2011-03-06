@@ -1,0 +1,3035 @@
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+
+Use decideAction: length: 2 2 2 
+
+WRONG decideAction call
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 2 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 2 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 1 1 
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
+
+Use decideAction: length: 0 
+gameTree/gameTree.c:22	 Warning: getNode return NULL	actionList(4):	1221
+
+Use decideAction: length: 1 1 
+gameTree/gameTree.c:88	 Warning: getOpponentAction return default(total == 0)
+actionList(3):	122
