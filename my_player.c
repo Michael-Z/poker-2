@@ -126,10 +126,12 @@ int main( int argc, char **argv )
       exit( EXIT_FAILURE );
     }
 	
+	#if 0
 	fprintf(stderr, "round: %d\t first player id: %d\t, viewingplayer id: %d\n", 
 					state.state.round, 
 					game->firstPlayer[state.state.round], 
 					state.viewingPlayer);
+	#endif
 	
     if( stateFinished( &state.state ) ) {
       /* ignore the game over message */

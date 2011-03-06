@@ -5,7 +5,7 @@
 
 * Creation Date : 26-02-2011
 
-* Last Modified : Fri 04 Mar 2011 04:26:42 PM EST
+* Last Modified : Sat 05 Mar 2011 09:41:41 PM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
@@ -280,16 +280,22 @@ void printNode(struct Node *node)
 	}
 	fprintf(stdout, "\t");
 	if (node->type == strength) {
+		/* debug */
+		Bucket total = 0;
 		for (i=0; i<MAX_NUM_BUCKETS; i++) {
 			fprintf(stdout, "strength: %d\t", node->data.bucket[i]);
+			total += node->data.bucket[i];
 		}
 		fprintf(stdout, "\n");
+		assert(total > 0);
+
 	}
 	else {
 		fprintf(stdout, "Flop: %d\t Call: %d\t Raise: %d\n", 
 				node->data.actionDist[0], 
 				node->data.actionDist[1], 
 				node->data.actionDist[2]);
+			
 	}
 	for(i=0; i<3; i++) {
 		printNode(node->child[i]);

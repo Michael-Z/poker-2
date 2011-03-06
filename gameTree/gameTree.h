@@ -45,19 +45,12 @@ typedef struct Gametree
 
 
 Gametree* initTree(int numRaise);
-
 Gametree* constructTree(Game *game, State *state, int opponentID, int selfID);	
-
 Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int numRaise, DataType handStrength, int opponentID, int isFirst);
-
 int getDegree(Gametree* testnode);
-
 int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, int isFirst);
-
 void getActionList(Gametree *testnode, Action* actionList);
-
 DataType findMax(DataType x1, DataType x2, DataType x3);
-
 void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, Action* action);
 
 

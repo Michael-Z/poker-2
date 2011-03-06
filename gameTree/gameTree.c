@@ -562,21 +562,21 @@ void getActionList(Gametree *testnode, Action *actionList)
 		actionList = NULL;
 		//return actionList;
 	}
-	fprintf(stderr,"\nDebug:");
+//	fprintf(stderr,"\nDebug:");
 	while (tempnode->parent)
 	{
 		(*(temp+i)).type = tempnode->nodeType;
-		fprintf(stderr,"%d ", tempnode->nodeType);
+//		fprintf(stderr,"%d ", tempnode->nodeType);
 		i++;
 		tempnode = tempnode->parent;
 	}
 	i--;
 	int tempi = i;
-	fprintf(stderr,"\ncompare:%d %d",i,getDegree(testnode) - 1);
+//	fprintf(stderr,"\ncompare:%d %d",i,getDegree(testnode) - 1);
 	for (j = 0; j <= tempi; j++)
 	{
 		(*(actionList + j)).type = (*(temp + i)).type;
-		fprintf(stderr,"\nAfterdebug: %d",(*(temp+i)).type);
+//		fprintf(stderr,"\nAfterdebug: %d",(*(temp+i)).type);
 		i--;
 	}
 	//return actionList;
@@ -594,7 +594,7 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, 
 	//TODO: from the actionList, return the best action.
 	Gametree* temptree = thisGametree;
 	int i = 0;
-	fprintf(stderr,"\n Use decideAction: length: %d ",actionNumber);
+	fprintf(stderr,"\nUse decideAction: length: %d ",actionNumber);
 	for (i = 0; i<actionNumber; i++)
 	{
 		fprintf(stderr,"%d ",(*(actionList+i)).type);
