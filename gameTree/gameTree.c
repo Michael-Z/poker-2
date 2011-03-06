@@ -14,7 +14,7 @@
 DataType winningProb(Game *game, State *state, int myHandStrength, int opponentID, int isFirst, Action* actionList, int actLen)
 {
 	uint8_t round = state->round;
-	uint8_t playerID = currentPlayer(game,state);
+	//uint8_t playerID = currentPlayer(game,state);
 	int listvar = 0;
 	fprintf(stderr,"\nList info: %d. info:",actLen);
 	for (listvar = 0; listvar < actLen; listvar ++)
@@ -22,7 +22,7 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 		fprintf(stderr, "%d ",(*(actionList+listvar)).type);
 		}
 
-	struct Node* node = getNode(actionList, actLen, round, playerID);
+	struct Node* node = getNode(actionList, actLen, round, opponentID);
 	if (!node)
 	{
 		fprintf(stderr,"\n A default 0.5 value is used to compute winning prob (node is NULL)\n");
@@ -47,11 +47,11 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 	return winningP;
 }
 
-DataType* getOpponentAction(Game *game, State *state, Action* actionList, int actLen)
+DataType* getOpponentAction(Game *game, State *state, Action* actionList, int actLen, int opponentID)
 {
 	int round = state->round;
-	int playerID = currentPlayer(game,state);
-	struct Node* node = getNode(actionList, actLen, round, playerID);
+	//int playerID = currentPlayer(game,state);
+	struct Node* node = getNode(actionList, actLen, round, opponentID);
 	unsigned total = 0;
 	int i;
 	DataType* action = (DataType*) malloc(sizeof(DataType)*3);
@@ -371,7 +371,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 				Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
 				getActionList(nodeindex[i]->parent,actionList);
 				int actLen = getDegree(nodeindex[i]->parent)-1;
-				opponentAction=getOpponentAction(game,state,actionList,actLen);
+				opponentAction=getOpponentAction(game,state,actionList,actLen,opponentID);
 				nodeindex[i]->parent->data = (*(opponentAction+2)) * nodeindex[i]->data + (*(opponentAction+1)) * nodeindex[i-1]->data + (*opponentAction) * nodeindex[i-2]->data;
 			}
 			i -= 3;
@@ -386,7 +386,7 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 				Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
 				getActionList(nodeindex[i]->parent,actionList);
 				int actLen = getDegree(nodeindex[i]->parent)-1;
-				opponentAction=getOpponentAction(game,state,actionList,actLen);
+				opponentAction=getOpponentAction(game,state,actionList,actLen,opponentID);
 				nodeindex[i]->parent->data = (*(opponentAction+1)) * nodeindex[i]->data + (*(opponentAction)) * nodeindex[i-1]->data;
 			}
 			i -= 2;
