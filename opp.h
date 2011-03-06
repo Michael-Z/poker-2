@@ -56,8 +56,9 @@ void releaseBase(OppBase *base);
 void initModel();
 
 #ifdef DEBUG
-void printNode(struct Node *node);
+void printNode(struct Node *node, FILE *file);
 void printBase(OppBase *base);
 void printModel();
+void printRound(Game *game, uint8_t round, uint8_t pos);
 #endif
 

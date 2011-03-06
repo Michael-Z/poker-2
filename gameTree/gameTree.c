@@ -16,18 +16,18 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 {
 	uint8_t round = state->round;
 	//uint8_t playerID = currentPlayer(game,state);
-	struct Node* node = getNode(actionList, actLen-1, round, opponentID);
+	struct Node* node = getNode(actionList, actLen, round, opponentID);
 	if (!node)
 	{
 		fprintf(stderr, "%s:%d\t Warning: getNode return NULL\t", __FILE__, __LINE__);
-		//printModel(game);
 		int i;
-		fprintf(stderr, "actionList(%d):\t", actLen);
+		fprintf(stderr, "round:%d\t oppID:%d\t actionList(%d):\t", round, opponentID, actLen);
 		for(i=0; i<actLen; i++) {
 			fprintf(stderr, "%d", actionList[i].type);
 			}
 		fprintf(stderr, "\n");
-
+		//printModel(game);
+		printRound(game, round, opponentID);
 		return 0.5;
 	}
 	DataType winningP = 0;
@@ -41,7 +41,7 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 	if (total == 0)
 	{
 		fprintf(stderr, "%s:%d\t Warning: WinningProb return default(total == 0)\t", __FILE__, __LINE__);
-		printNode(node);
+		printNode(node, stderr);
 		int i;
 		fprintf(stderr, "round:%d\t actionList(%d):\t", round, actLen);
 		for(i=0; i<actLen; i++) {
@@ -69,9 +69,9 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 	DataType* action = (DataType*) malloc(sizeof(DataType)*3);
 	if (!node)
 	{
-		fprintf(stderr, "%s:%d\t Warning: getNode return NULL\n", __FILE__, __LINE__);
+		fprintf(stderr, "%s:%d\t Warning: getNode return NULL\t", __FILE__, __LINE__);
 		int i;
-		fprintf(stderr, "round:%d\t actionList(%d):\t", round, actLen);
+		fprintf(stderr, "round:%d\t oppID:%d\t actionList(%d):\t", round, opponentID, actLen);
 		for(i=0; i<actLen; i++) {
 			fprintf(stderr, "%d", actionList[i].type);
 			}
@@ -79,6 +79,9 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 		action[0] = 0.33;
 		action[1] = 0.33;
 		action[2] = 0.33;
+		
+		printRound(game, round, opponentID);
+
 		return action;
 	}
 	for(i=0; i<3; i++)
@@ -91,7 +94,7 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 		fprintf(stderr, "actionList(%d):\t", actLen);
 		for(i=0; i<actLen; i++) {
 			fprintf(stderr, "%d", actionList[i].type);
-			}
+		}
 		fprintf(stderr, "\n");
 
 		action[0] = 0.33;
@@ -118,8 +121,8 @@ Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)
 	currentRound = state->round;
 	numRaise = game->maxRaises[currentRound];
 	thisGametree = initTree(numRaise);
-	handStrength = computeHandStrength(state,selfID) - 1;	//fuck yuchen
-	if ((int)(game->firstPlayer[currentRound]-1) == selfID)
+	handStrength = computeHandStrength(state, selfID) - 1;	//fuck yuchen
+	if ((int)(game->firstPlayer[currentRound]) == selfID)
 		isFirst = 1;
 
 	thisGametree = computeTreevalue(game, state, thisGametree, 
@@ -365,7 +368,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 					Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
 					getActionList(nodeindex[i],actionList);
 					int actLen = getDegree(nodeindex[i])-1;
-					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, actionList,actLen)*totalSpent-playerSpent;
+					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, actionList,actLen-1)*totalSpent-playerSpent;
 				}
 			}
 			else								//B's move
@@ -378,7 +381,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 					Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
 					getActionList(nodeindex[i],actionList);
 					int actLen = getDegree(nodeindex[i])-1;
-					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID ,actionList,actLen)*totalSpent-playerSpent;
+					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID ,actionList,actLen-1)*totalSpent-playerSpent;
 				}
 			}
 		}
@@ -614,12 +617,12 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionLen, Act
 	//TODO: from the actionList, return the best action.
 	Gametree* temptree = thisGametree;
 	int i = 0;
-	fprintf(stderr,"\nUse decideAction: length: %d ",actionLen);
+	//fprintf(stderr,"\nUse decideAction: length: %d ",actionLen);
 	for (i = 0; i<actionLen; i++)
 	{
-		fprintf(stderr,"%d ", actionList[i].type);
+		//fprintf(stderr,"%d ", actionList[i].type);
 	}
-	fprintf(stderr,"\n");
+	//fprintf(stderr,"\n");
 	if (actionLen)
 	{
 	for(i = 0; i < actionLen; i++)

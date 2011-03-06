@@ -5,7 +5,7 @@
 
 * Creation Date : 26-02-2011
 
-* Last Modified : Sat 05 Mar 2011 09:41:41 PM EST
+* Last Modified : Sun 06 Mar 2011 03:05:25 AM EST
 
 * Created By : Weikeng Qin (weikqin@gmail.com)
 
@@ -89,6 +89,8 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 	struct Node *pt = NULL;
 	OppBase *base;
 
+	if (state->numActions[round] == 0) return;
+	
 	if (round < MAX_ROUNDS) {
 		base = &flopsBase[round];
 	}
@@ -237,24 +239,24 @@ void releaseBase(OppBase *base)
 }
 
 #ifdef DEBUG
-void printNode(struct Node *node)
+void printNode(struct Node *node, FILE *file)
 {
 	if (NULL == node) return;
 
-	fprintf(stdout, "Betting: ");
-	fflush(stdout);
+	fprintf(file, "Betting: ");
+	fflush(file);
 	int i;
 	for(i=0; i<node->actionNum; i++) {
 		switch(node->actionList[i]) 
 			{
 			case fold:
-				fprintf(stdout, "f");
+				fprintf(file, "f");
 				break;
 			case call:
-				fprintf(stdout, "c");
+				fprintf(file, "c");
 				break;
 			case raise:
-				fprintf(stdout, "r");
+				fprintf(file, "r");
 				break;
 			default:
 				fprintf(stderr, "%s:%d\t printNode: abnormal action %d\n", __FILE__, __LINE__, node->actionList[i]);
@@ -262,7 +264,7 @@ void printNode(struct Node *node)
 				fprintf(stderr, "node action(%d):\t", node->actionNum);
 				for(k=0; k<node->actionNum; k++) {
 					fprintf(stderr, "%d", node->actionList[i]);
-					}
+				}
 				fprintf(stderr, "\n");
 				/* print parent node's actionlist */
 				struct Node *parent = node->parent;
@@ -281,35 +283,36 @@ void printNode(struct Node *node)
 			}
 		if (node->actionList[i] == invalid) break;
 	}
-	fprintf(stdout, "\t");
+	fprintf(file, "\t");
 	if (node->type == strength) {
 		/* debug */
 		Bucket total = 0;
 		for (i=0; i<MAX_NUM_BUCKETS; i++) {
-			fprintf(stdout, "strength: %d\t", node->data.bucket[i]);
+			fprintf(file, "strength: %d\t", node->data.bucket[i]);
 			total += node->data.bucket[i];
 		}
-		fprintf(stdout, "\n");
+		fprintf(file, "\n");
 		assert(total > 0);
 
 	}
 	else {
-		fprintf(stdout, "Flop: %d\t Call: %d\t Raise: %d\n", 
+		fprintf(file, "Flop: %d\t Call: %d\t Raise: %d\n", 
 				node->data.actionDist[0], 
 				node->data.actionDist[1], 
 				node->data.actionDist[2]);
 			
 	}
 	for(i=0; i<3; i++) {
-		printNode(node->child[i]);
+		printNode(node->child[i], file);
 	}
 }
+
 void printBase(OppBase *base)
 {
 	fprintf(stdout, "As 1st Player\n");
-	printNode(base->dealerRoot);
+	printNode(base->dealerRoot, stdout);
 	fprintf(stdout, "As non-1st Player\n");
-	printNode(base->nonDealerRoot);
+	printNode(base->nonDealerRoot, stdout);
 	printf("\n");
 }
 
@@ -320,5 +323,21 @@ void printModel(Game *game)
 		fprintf(stdout, "%d th round:\n", i);
 		printBase(&flopsBase[i]);
 	}
+}
+
+void printRound(Game *game, uint8_t round, uint8_t pos)
+{
+	if (round >= game->numRounds) {
+		fprintf(stderr, "%s:%d printRound: invalid round\n", __FILE__, __LINE__);
+		exit(EXIT_FAILURE);
+	}
+
+	if (0 == round) { /*preflop*/
+		printNode((pos == 0)?flopsBase[0].nonDealerRoot:flopsBase[0].dealerRoot, stderr);
+	}
+	else {
+		printNode((pos == 1)?flopsBase[round].nonDealerRoot:flopsBase[round].dealerRoot, stderr);
+	}
+	fprintf(stderr, "\n");
 }
 #endif
