@@ -48,8 +48,8 @@ unsigned calcStrength();
 /* ========= All the following functions are now only for two people, limit game =================*/
 void initNode(struct Node* node, enum NodeType type);
 struct Node* initBase(OppBase *base, bool isPlayFirst);
-void updateBase(uint8_t round, uint8_t pos, State *state);
-void updateModel(Game *game, uint8_t pos, State *state);
+void updateBase(uint8_t round, uint8_t pos, State *state, bool isFold);
+void updateModel(Game *game, uint8_t pos, State *state, bool isFold);
 struct Node *getNode(Action *act, uint8_t actLen, uint8_t round, uint8_t pos);
 void releaseNode(struct Node *node);
 void releaseBase(OppBase *base);

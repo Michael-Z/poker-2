@@ -136,11 +136,21 @@ int main( int argc, char **argv )
     if( stateFinished( &state.state ) ) {
       /* ignore the game over message */
       /* debug */
-      printf("Showdown message: %s", line);
-      updateModel(game, (uint8_t)1-state.viewingPlayer, &state.state); 
-      #ifdef DEBUG
-	  printModel(game);
-      #endif
+	  int i;
+	  bool isFold = false;
+	  for(i=0; i<game->numPlayers; i++) {
+	  	if(state.state.playerFolded[i] == 1) {
+			isFold = true;
+			break;
+	  	}
+	  }
+
+   		printf("Showdown message: %s", line);
+   		updateModel(game, (uint8_t)1-state.viewingPlayer, &state.state, isFold); 
+   		#ifdef DEBUG
+ 		printModel(game);
+   		#endif
+	  
 	  game_played ++;
       finishOnce = 1;
 	  continue;

@@ -80,7 +80,7 @@ void initModel(Game *game)
 	}
 }
 
-void updateBase(uint8_t round, uint8_t pos, State *state)
+void updateBase(uint8_t round, uint8_t pos, State *state, bool isFold)
 {
 	int k;
 	int i;
@@ -145,9 +145,11 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 		else {
 			if (pt->type == prob) {(pt->data.actionDist[type])++ ;}
 			else {
-				unsigned idx = computeHandStrength(state, pos);
-				assert(idx <= MAX_NUM_BUCKETS);
-				(pt->data.bucket[idx-1]) ++;
+				if (false == isFold) {
+					unsigned idx = computeHandStrength(state, pos);
+					assert(idx <= MAX_NUM_BUCKETS);
+					(pt->data.bucket[idx-1]) ++;
+				}
 			}
 			if (pt->child[type] == NULL) {
 				pt->child[type] = (struct Node*)malloc(sizeof(struct Node));
@@ -161,7 +163,7 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 				#endif
 				
 				/* in case the last strength node can't get updated since no action is following */
-				if((pt->type == prob) && (k == localActionNum-1)) {
+				if((pt->type == prob) && (k == localActionNum-1) && (false == isFold)) {
 					unsigned idx = computeHandStrength(state, pos);
 					(pt->child[type]->data.bucket[idx-1]) ++;
 				}
@@ -171,11 +173,11 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 	}
 }
 
-void updateModel(Game *game, uint8_t pos, State *state)
+void updateModel(Game *game, uint8_t pos, State *state, bool isFold)
 {
 	int i;
 	for(i=0; i<game->numRounds; i++) {
-		updateBase((uint8_t)i, pos, state);
+		updateBase((uint8_t)i, pos, state, isFold);
 	}
 }
 	
@@ -292,7 +294,7 @@ void printNode(struct Node *node, FILE *file)
 			total += node->data.bucket[i];
 		}
 		fprintf(file, "\n");
-		assert(total > 0);
+		//assert(total > 0);
 
 	}
 	else {
