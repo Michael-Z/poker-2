@@ -15,6 +15,13 @@ DataType winningProb(Game *game, State *state, int myHandStrength, int opponentI
 {
 	uint8_t round = state->round;
 	uint8_t playerID = currentPlayer(game,state);
+	int listvar = 0;
+	fprintf(stderr,"\nList info: %d. info:",actLen);
+	for (listvar = 0; listvar < actLen; listvar ++)
+	{
+		fprintf(stderr, "%d ",(*(actionList+listvar)).type);
+		}
+
 	struct Node* node = getNode(actionList, actLen, round, playerID);
 	if (!node)
 	{
@@ -324,7 +331,9 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 					nodeindex[i]->data = 0 - playerSpent;
 				if (nodeindex[i]->nodeType == 1)	//After two calls
 				{
-					Action* actionList = getActionList(nodeindex[i]);
+					//Action* actionList = getActionList(nodeindex[i]);
+					Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+					getActionList(nodeindex[i],actionList);
 					int actLen = getDegree(nodeindex[i])-1;
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, isFirst, actionList,actLen)*totalSpent-playerSpent;
 				}
@@ -335,7 +344,9 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 					nodeindex[i]->data = totalSpent - playerSpent;
 				if (nodeindex[i]->nodeType == 1)	//After two calls
 				{
-					Action* actionList = getActionList(nodeindex[i]);
+					//Action* actionList = getActionList(nodeindex[i]);
+					Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+					getActionList(nodeindex[i],actionList);
 					int actLen = getDegree(nodeindex[i])-1;
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID,isFirst,actionList,actLen)*totalSpent-playerSpent;
 				}
@@ -356,7 +367,9 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 				nodeindex[i]->parent->data = findMax(nodeindex[i]->data,nodeindex[i-1]->data,nodeindex[i-2]->data);
 			else
 			{
-				Action* actionList = getActionList(nodeindex[i]->parent);
+				//Action* actionList = getActionList(nodeindex[i]->parent);
+				Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+				getActionList(nodeindex[i]->parent,actionList);
 				int actLen = getDegree(nodeindex[i]->parent)-1;
 				opponentAction=getOpponentAction(game,state,actionList,actLen);
 				nodeindex[i]->parent->data = (*(opponentAction+2)) * nodeindex[i]->data + (*(opponentAction+1)) * nodeindex[i-1]->data + (*opponentAction) * nodeindex[i-2]->data;
@@ -370,7 +383,8 @@ Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int nu
 				nodeindex[i]->parent->data = ((nodeindex[i]->data) > (nodeindex[i-1]->data)) ? (nodeindex[i]->data) :(nodeindex[i]->data);
 			else
 			{
-				Action* actionList = getActionList(nodeindex[i]->parent);
+				Action* actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+				getActionList(nodeindex[i]->parent,actionList);
 				int actLen = getDegree(nodeindex[i]->parent)-1;
 				opponentAction=getOpponentAction(game,state,actionList,actLen);
 				nodeindex[i]->parent->data = (*(opponentAction+1)) * nodeindex[i]->data + (*(opponentAction)) * nodeindex[i-1]->data;
@@ -523,9 +537,9 @@ int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpe
 	}
 }
 
-Action* getActionList(Gametree *testnode)
+void getActionList(Gametree *testnode, Action *actionList)
 {
-	Action *actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
+	//Action *actionList = (Action *)malloc(sizeof(Action)*MAXDEGREE);
 	Action *temp = (Action *)malloc(sizeof(Action)*MAXDEGREE);
 	Gametree *tempnode;
 	int i = 0;
@@ -536,21 +550,26 @@ Action* getActionList(Gametree *testnode)
 	if (getDegree(testnode) == 1)
 	{
 		actionList = NULL;
-		return actionList;
+		//return actionList;
 	}
+	fprintf(stderr,"\nDebug:");
 	while (tempnode->parent)
 	{
 		(*(temp+i)).type = tempnode->nodeType;
+		fprintf(stderr,"%d ", tempnode->nodeType);
 		i++;
 		tempnode = tempnode->parent;
 	}
 	i--;
-	for (j = 0; j <= i; j++)
+	int tempi = i;
+	fprintf(stderr,"\ncompare:%d %d",i,getDegree(testnode) - 1);
+	for (j = 0; j <= tempi; j++)
 	{
 		(*(actionList + j)).type = (*(temp + i)).type;
+		fprintf(stderr,"\nAfterdebug: %d",(*(temp+i)).type);
 		i--;
 	}
-	return actionList;
+	//return actionList;
 }
 
 DataType findMax(DataType x1, DataType x2, DataType x3)
