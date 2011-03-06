@@ -16,10 +16,11 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 {
 	uint8_t round = state->round;
 	//uint8_t playerID = currentPlayer(game,state);
-	struct Node* node = getNode(actionList, actLen, round, opponentID);
+	struct Node* node = getNode(actionList, actLen-1, round, opponentID);
 	if (!node)
 	{
-		fprintf(stderr, "%s:%d\t Warning: getNode return NULL\n", __FILE__, __LINE__);
+		fprintf(stderr, "%s:%d\t Warning: getNode return NULL\t", __FILE__, __LINE__);
+		//printModel(game);
 		int i;
 		fprintf(stderr, "actionList(%d):\t", actLen);
 		for(i=0; i<actLen; i++) {
@@ -36,13 +37,23 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 	{
 		total += node->data.bucket[i];
 	}
+	
+	if (total == 0)
+	{
+		fprintf(stderr, "%s:%d\t Warning: WinningProb return default(total == 0)\t", __FILE__, __LINE__);
+		printNode(node);
+		int i;
+		fprintf(stderr, "round:%d\t actionList(%d):\t", round, actLen);
+		for(i=0; i<actLen; i++) {
+			fprintf(stderr, "%d", actionList[i].type);
+			}
+		fprintf(stderr, "\n");
+
+		return 0.5;
+	}
+	
 	for (i=0;i<myHandStrength-1;i++)
 	{
-		if (total == 0)
-		{
-			fprintf(stderr, "\n A default 0.5 value is used to compute winning Prob (total == 0)\n");
-			return 0.5;
-		}
 		winningP += (node->data.bucket[i])/(double)total;
 	}
 	return winningP;
@@ -60,7 +71,7 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 	{
 		fprintf(stderr, "%s:%d\t Warning: getNode return NULL\n", __FILE__, __LINE__);
 		int i;
-		fprintf(stderr, "actionList(%d):\t", actLen);
+		fprintf(stderr, "round:%d\t actionList(%d):\t", round, actLen);
 		for(i=0; i<actLen; i++) {
 			fprintf(stderr, "%d", actionList[i].type);
 			}
@@ -74,7 +85,15 @@ DataType* getOpponentAction(Game *game, State *state, Action* actionList, int ac
 		total += node->data.actionDist[i];
 	if (total == 0)
 	{
-		fprintf(stderr,"\n A default 0.33 value for actions is used to compute action Prob (total == 0)\n");
+		fprintf(stderr,"%s:%d\t Warning: getOpponentAction return default(total == 0)\n", __FILE__, __LINE__);
+		
+		int i;
+		fprintf(stderr, "actionList(%d):\t", actLen);
+		for(i=0; i<actLen; i++) {
+			fprintf(stderr, "%d", actionList[i].type);
+			}
+		fprintf(stderr, "\n");
+
 		action[0] = 0.33;
 		action[1] = 0.33;
 		action[2] = 0.33;
@@ -99,11 +118,12 @@ Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)
 	currentRound = state->round;
 	numRaise = game->maxRaises[currentRound];
 	thisGametree = initTree(numRaise);
-	handStrength = computeHandStrength(state,selfID);
-	if ((int)(game->firstPlayer[currentRound]) == selfID)
+	handStrength = computeHandStrength(state,selfID) - 1;	//fuck yuchen
+	if ((int)(game->firstPlayer[currentRound]-1) == selfID)
 		isFirst = 1;
 
-	thisGametree = computeTreevalue(game, state, thisGametree, numRaise, handStrength, opponentID, isFirst);
+	thisGametree = computeTreevalue(game, state, thisGametree, 
+									numRaise, handStrength, opponentID, isFirst);
 	return thisGametree;
 }
 
@@ -589,26 +609,26 @@ DataType findMax(DataType x1, DataType x2, DataType x3)
 	return maxNo;
 }
 
-void decideAction(Gametree* thisGametree, Action* actionList, int actionNumber, Action* action)
+void decideAction(Gametree* thisGametree, Action* actionList, int actionLen, Action* action)
 {
 	//TODO: from the actionList, return the best action.
 	Gametree* temptree = thisGametree;
 	int i = 0;
-	fprintf(stderr,"\nUse decideAction: length: %d ",actionNumber);
+	fprintf(stderr,"\nUse decideAction: length: %d ",actionLen);
 	for (i = 0; i<actionNumber; i++)
 	{
-		fprintf(stderr,"%d ",(*(actionList+i)).type);
-		}
-		fprintf(stderr,"\n");
-	if (actionNumber)
+		fprintf(stderr,"%d ", actionList[i].type);
+	}
+	fprintf(stderr,"\n");
+	if (actionLen)
 	{
-	for(i = 0; i < actionNumber; i++)
+	for(i = 0; i < actionLen; i++)
 	{
-		if ((*(actionList+i)).type == 0)
+		if (actionList[i].type == 0)
 			temptree = temptree->fold;
-		else if ((*(actionList+i)).type == 1)
+		else if (actionList[i].type == 1)
 			temptree = temptree->call;
-		else if ((*(actionList+i)).type == 2)
+		else if (actionList[i].type == 2)
 			temptree = temptree->raise;
 	}
 	}

@@ -139,7 +139,7 @@ int main( int argc, char **argv )
       printf("Showdown message: %s", line);
       updateModel(game, (uint8_t)1-state.viewingPlayer, &state.state); 
       #ifdef DEBUG
-	  printModel(game);
+	  //printModel(game);
       #endif
 	  game_played ++;
       finishOnce = 1;

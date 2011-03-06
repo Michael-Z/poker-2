@@ -59,11 +59,13 @@ struct Node* initBase(OppBase *base, bool isPlayFirst)
 {
 	if (false == isPlayFirst) {
 		base->nonDealerRoot  = (struct Node*)malloc(sizeof(struct Node));
+		assert(NULL != base->nonDealerRoot);
 		initNode(base->nonDealerRoot, strength);
 		return base->nonDealerRoot;
 		}
 	else {
 		base->dealerRoot  = (struct Node*)malloc(sizeof(struct Node));
+		assert(NULL != base->dealerRoot);
 		initNode(base->dealerRoot, prob);
 		return base->dealerRoot;
 	}
@@ -147,6 +149,7 @@ void updateBase(uint8_t round, uint8_t pos, State *state)
 			}
 			if (pt->child[type] == NULL) {
 				pt->child[type] = (struct Node*)malloc(sizeof(struct Node));
+				assert(NULL != pt->child[type]);
 				initNode(pt->child[type], (pt->type == prob)? strength: prob);
 				pt->child[type]->parent = pt;
 				#ifdef DEBUG
