@@ -615,7 +615,7 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionLen, Act
 	Gametree* temptree = thisGametree;
 	int i = 0;
 	fprintf(stderr,"\nUse decideAction: length: %d ",actionLen);
-	for (i = 0; i<actionNumber; i++)
+	for (i = 0; i<actionLen; i++)
 	{
 		fprintf(stderr,"%d ", actionList[i].type);
 	}

@@ -102,7 +102,7 @@ int main( int argc, char **argv )
 
   initModel(game);
   
-  int previous_round = 1;
+  int preRound = 1;
 
   int game_played = 0;
   int finishOnce = 0;
@@ -114,10 +114,10 @@ int main( int argc, char **argv )
     }
 
     len = readMatchState( line, game, &state );
-	if ((game_played >= 100) && (finishOnce || (state.state.round != previous_round))) 
+	if ((game_played >= 100) && (finishOnce || (state.state.round != preRound))) 
 	{
 		gTree = constructTree(game,&state.state, 1-state.viewingPlayer, state.viewingPlayer);
-		previous_round = state.state.round;
+		preRound = state.state.round;
 		finishOnce = 0;
 	}
     if( len < 0 ) {
