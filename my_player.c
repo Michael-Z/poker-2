@@ -34,7 +34,9 @@ int main( int argc, char **argv )
   int actLen;
   Action actionList[MAXDEGREE];
   Gametree* gTree;
-    if( argc < 4 ) {
+  Gametree* tempTree;
+
+	if( argc < 4 ) {
 
     fprintf( stderr, "usage: player game server port\n" );
     exit( EXIT_FAILURE );
@@ -117,6 +119,12 @@ int main( int argc, char **argv )
 	if ((game_played >= 100) && (finishOnce || (state.state.round != preRound))) 
 	{
 		gTree = constructTree(game,&state.state, 1-state.viewingPlayer, state.viewingPlayer);
+		if (game_played == 9999)
+		{
+			tempTree = gTree;
+			fprintf(stderr,"\nfinal gTree:\n");
+			printTree(tempTree, game->maxRaises[state.state.round]);
+		}
 		preRound = state.state.round;
 		finishOnce = 0;
 	}
