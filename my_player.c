@@ -119,7 +119,7 @@ int main( int argc, char **argv )
 	if ((game_played >= 100) && (finishOnce || (state.state.round != preRound))) 
 	{
 		gTree = constructTree(game,&state.state, 1-state.viewingPlayer, state.viewingPlayer);
-		if (game_played == 9999)
+		if ((game_played == 9999) || (computeHandStrength(&state.state, state.viewingPlayer) == 5))
 		{
 			tempTree = gTree;
 			fprintf(stderr,"\nfinal gTree:\n");
@@ -128,7 +128,8 @@ int main( int argc, char **argv )
 		preRound = state.state.round;
 		finishOnce = 0;
 	}
-    if( len < 0 ) {
+    //fprintf(stderr,"here");
+	if( len < 0 ) {
 
       fprintf( stderr, "ERROR: could not read state %s", line );
       exit( EXIT_FAILURE );
@@ -160,6 +161,7 @@ int main( int argc, char **argv )
    		#endif
 	  
 	  game_played ++;
+	  fprintf(stderr, "GAMEPLAYED: %d\n", game_played);
       finishOnce = 1;
 	  continue;
     }
