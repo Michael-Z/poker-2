@@ -155,6 +155,7 @@ int main( int argc, char **argv )
 	  }
 
    		printf("Showdown message: %s", line);
+		fprintf(stdout, "game# %d\n", game_played + 1);
    		updateModel(game, (uint8_t)1-state.viewingPlayer, &state.state, isFold); 
    		#ifdef DEBUG
  		printModel(game);
