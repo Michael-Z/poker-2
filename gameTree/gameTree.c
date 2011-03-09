@@ -57,13 +57,22 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 {
 	uint8_t round = state->round;
 	//uint8_t playerID = currentPlayer(game,state);
-	int loopvar;
-	fprintf(stderr,"\nPrint here: actLen(%d)", actLen);
+	//int loopvar;
+	//fprintf(stderr,"\nPrint here: actLen(%d)", actLen);
+	#if 0
 	for (loopvar = 0; loopvar < actLen; loopvar++)
 	{
 		fprintf(stderr,"%d",actionList[loopvar].type);
 	}
 		fprintf(stderr,"\n");
+	#endif
+	int j;
+	fprintf(stderr, "getNode actionList(%d):\t", actLen);
+	for(j=0; j<actLen; j++) {
+			fprintf(stderr, "%d", actionList[j].type);
+		}
+	fprintf(stderr, "\n");
+		
 	struct Node* node = getNode(actionList, actLen, round, opponentID);
 	if (!node)
 	{
@@ -85,7 +94,8 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 	{
 		total += node->data.bucket[i];
 	}
-	
+
+#if 0	
 	if (total == 0)
 	{
 		fprintf(stderr, "%s:%d\t Warning: WinningProb return default(total == 0)\n", __FILE__, __LINE__);
@@ -99,13 +109,18 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 
 		return 0.5;
 	}
+	
+#endif
+	if (total < 200) {
+		return (double)myHandStrength / 5;
+	}
 
-	fprintf(stderr,"\nBucket: %d %d %d %d %d. hand: %d",node->data.bucket[0],node->data.bucket[1],node->data.bucket[2],node->data.bucket[3],node->data.bucket[4],myHandStrength);
+	//fprintf(stderr,"\nBucket: %d %d %d %d %d. hand: %d",node->data.bucket[0],node->data.bucket[1],node->data.bucket[2],node->data.bucket[3],node->data.bucket[4],myHandStrength);
 	for (i=0;i<myHandStrength;i++)
 	{
 		winningP += (node->data.bucket[i])/(double)total;
 	}
-	fprintf(stderr,"\nShowing WinningP: %f",winningP);
+	//fprintf(stderr,"\nShowing WinningP: %f",winningP);
 	return winningP;
 }
 
@@ -113,6 +128,13 @@ void getOpponentAction(Game *game, State *state, Action* actionList, int actLen,
 {
 	int round = state->round;
 	//int playerID = currentPlayer(game,state);
+	
+	int j;
+	fprintf(stderr, "getNode actionList(%d):\t", actLen);
+	for(j=0; j<actLen; j++) {
+			fprintf(stderr, "%d", actionList[j].type);
+		}
+	fprintf(stderr, "\n");
 	struct Node* node = getNode(actionList, actLen, round, opponentID);
 	unsigned total = 0;
 	int i;
@@ -133,6 +155,7 @@ void getOpponentAction(Game *game, State *state, Action* actionList, int actLen,
 		printRound(game, round, opponentID);
 
 	//	return action;
+		return;
 	}
 	for(i=0; i<3; i++)
 		total += node->data.actionDist[i];
@@ -151,13 +174,14 @@ void getOpponentAction(Game *game, State *state, Action* actionList, int actLen,
 		action[1] = 0.33;
 		action[2] = 0.33;
 		//return action;
+		return;
 		
 	}
 //	fprintf("\naction:%f %f %f,%f",(float)node->data.actionDist[0],(float)node->data.actionDist[1],(float)node->data.actionDist[2],(float)total);
 
 	for(i=0; i<3; i++)
 		*(action+i) = ((DataType)(node->data.actionDist[i]))/((DataType)total);
-
+	return;
 	//return action;
 }
 Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)		
@@ -409,7 +433,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 		{
 			nodeDegree = getDegree(nodeindex[i]);
 			totalSpent = totalSpentChips(game, state, nodeindex[i], &playerSpent, isFirst);
-			fprintf(stderr,"%d",isFirst);
+			//fprintf(stderr,"%d",isFirst);
 			if ((!(nodeDegree%2) && (isFirst)) ||	((nodeDegree%2) && (!isFirst)))			
 			//If player A will decide first, then all nodes in even level will represent results of A's move, otherwise all nodes in odd level will represent results of  A's move
 			{
@@ -423,7 +447,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 					//if (0 == (getDegree(nodeindex[i])%2))
 					//{
 						getActionList((nodeindex[i])->parent,actionList);
-						fprintf(stderr,"\n nowrong1 %d %d\n",getDegree(nodeindex[i]),getDegree(nodeindex[i]->parent));
+						//fprintf(stderr,"\n nowrong1 %d %d\n",getDegree(nodeindex[i]),getDegree(nodeindex[i]->parent));
 						actLen = getDegree(nodeindex[i]) - 2;
 					//}
 					//else
@@ -433,12 +457,14 @@ Gametree* computeTreevalue(Game* game, State* state,
 					//	actLen = getDegree(nodeindex[i])-1;
 					//}
 
+					#if 0
 					int loopvar;
 					fprintf(stderr,"\nwinningP para actlen(%d):  ", actLen);
 					for (loopvar = 0; loopvar<actLen;loopvar++)
 					{
 						fprintf(stderr,"%d",(actionList+loopvar)->type);
 					}
+					#endif
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, actionList,actLen)*totalSpent-playerSpent;
 				}
 			}
@@ -454,7 +480,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 					//if (0 == (getDegree(nodeindex[i])%2))
 					//{
 						getActionList(nodeindex[i],actionList);
-						fprintf(stderr,"\n nowrong %d %d\n",getDegree(nodeindex[i]),getDegree(nodeindex[i]->parent));
+						//fprintf(stderr,"\n nowrong %d %d\n",getDegree(nodeindex[i]),getDegree(nodeindex[i]->parent));
 						actLen = getDegree(nodeindex[i]) - 1;
 					//}
 					//else
@@ -463,12 +489,14 @@ Gametree* computeTreevalue(Game* game, State* state,
 				//		getActionList((nodeindex[i])->parent,actionList);
 			//			actLen = getDegree(nodeindex[i])-2;
 				//	}
+				#if 0
 					int loopvar;
 					fprintf(stderr,"\nwinningP para actlen(%d):  ", actLen);
 					for (loopvar = 0; loopvar<actLen;loopvar++)
 					{
 						fprintf(stderr,"%d",(actionList+loopvar)->type);
 					}
+					#endif
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID ,actionList,actLen)*totalSpent-playerSpent;
 				}
 			}
@@ -494,7 +522,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 				int actLen = getDegree(nodeindex[i]->parent)-1;
 				DataType *opponentAction = (DataType *)malloc(sizeof(DataType)*3);
 				getOpponentAction(game,state,actionList,actLen,opponentID,opponentAction);
-				fprintf(stderr,"\nOpponentActionProb:%f,%f,%f",*(opponentAction+2),*(opponentAction+1),*(opponentAction));
+				//fprintf(stderr,"\nOpponentActionProb:%f,%f,%f",*(opponentAction+2),*(opponentAction+1),*(opponentAction));
 				nodeindex[i]->parent->data = (*(opponentAction+2)) * nodeindex[i]->data + (*(opponentAction+1)) * nodeindex[i-1]->data + (*opponentAction) * nodeindex[i-2]->data;
 			}
 			i -= 3;
@@ -511,7 +539,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 				int actLen = getDegree(nodeindex[i]->parent)-1;
 				DataType *opponentAction = (DataType *)malloc(sizeof(DataType)*3);
 				getOpponentAction(game,state,actionList,actLen,opponentID,opponentAction);
-				fprintf(stderr,"\nOpponentActionProb:%f,%f",*(opponentAction+1),*(opponentAction));
+				//fprintf(stderr,"\nOpponentActionProb:%f,%f",*(opponentAction+1),*(opponentAction));
 				nodeindex[i]->parent->data = (*(opponentAction+1)) * nodeindex[i]->data + (*(opponentAction)) * nodeindex[i-1]->data;
 			}
 			i -= 2;
@@ -717,9 +745,6 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionLen, Act
 	{
 		fprintf(stderr,"%d ", actionList[i].type);
 	}
-	//fprintf(stderr,"\n");
-	if (actionLen)
-	{
 	for(i = 0; i < actionLen; i++)
 	{
 		if (actionList[i].type == 0)
@@ -729,18 +754,19 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionLen, Act
 		else if (actionList[i].type == 2)
 			temptree = temptree->raise;
 	}
-	}
-	if (temptree->data == temptree->fold->data)
-		action->type = 0;
-	else if (temptree->data == temptree->call->data)
+	if (temptree->data == temptree->call->data)
 		action->type = 1;
+	else if (temptree->data == temptree->fold->data)
+		action->type = 0;
 	else if (temptree->raise)
 		{
 			if (temptree->data == temptree->raise->data)
 				action->type = 2;
 		}
-	else
+	else {
 		fprintf(stderr,"\nWRONG decideAction call\n");
+	}
+	
 }
 
 

@@ -119,7 +119,7 @@ int main( int argc, char **argv )
 	if ((game_played >= 100) && (finishOnce || (state.state.round != preRound))) 
 	{
 		gTree = constructTree(game,&state.state, 1-state.viewingPlayer, state.viewingPlayer);
-		if ((game_played == 9999) || (computeHandStrength(&state.state, state.viewingPlayer) == 5))
+		//if ((game_played == 9999) || (computeHandStrength(&state.state, state.viewingPlayer) == 5))
 		{
 			tempTree = gTree;
 			fprintf(stderr,"\nfinal gTree:\n");
@@ -155,7 +155,7 @@ int main( int argc, char **argv )
 	  }
 
    		printf("Showdown message: %s", line);
-		fprintf(stdout, "game# %d\n", game_played + 1);
+		fprintf(stdout, "game# %d oppID %d\n", game_played + 1, 1-state.viewingPlayer);
    		updateModel(game, (uint8_t)1-state.viewingPlayer, &state.state, isFold); 
    		#ifdef DEBUG
  		printModel(game);
