@@ -748,11 +748,38 @@ void decideAction(Gametree* thisGametree, Action* actionList, int actionLen, Act
 	for(i = 0; i < actionLen; i++)
 	{
 		if (actionList[i].type == 0)
-			temptree = temptree->fold;
+		{
+			if (temptree->fold)
+				temptree = temptree->fold;
+			else
+			{
+				fprintf(stderr,"\n Fatal error: No more folds!\n");
+				action->type = 1;
+				return;
+			}
+		}
 		else if (actionList[i].type == 1)
-			temptree = temptree->call;
+		{
+			if (temptree->call)
+				temptree = temptree->call;
+			else
+			{
+				fprintf(stderr,"\n Fatal error: No more calls!\n");
+				action->type = 1;
+				return;
+			}
+		}
 		else if (actionList[i].type == 2)
-			temptree = temptree->raise;
+		{
+			if (temptree->raise)
+				temptree = temptree->raise;
+			else
+			{
+				fprintf(stderr,"\n Fatal error: No more raises!\n");
+				action->type = 1;
+				return;
+			}
+		}
 	}
 	if (temptree->data == temptree->call->data)
 		action->type = 1;
