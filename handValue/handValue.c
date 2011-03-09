@@ -5,7 +5,7 @@
 
 * Creation Date :
 
-* Last Modified : Wed 02 Mar 2011 05:03:34 PM EST
+* Last Modified : Tue 08 Mar 2011 08:43:57 PM EST
 
 * Created By :
 
@@ -155,11 +155,11 @@ int computeHandStrength(State *state, int currentPlayer)
 		{
 			bucket = 5;
 		}
-		else if (IHS>0.81)
+		else if (IHS>0.7)
 		{
 			bucket = 4;
 		}
-		else if (IHS>0.67)
+		else if (IHS>0.5)
 		{
 			bucket = 3;
 		}
