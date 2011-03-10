@@ -116,10 +116,9 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 	}
 
 	//fprintf(stderr,"\nBucket: %d %d %d %d %d. hand: %d",node->data.bucket[0],node->data.bucket[1],node->data.bucket[2],node->data.bucket[3],node->data.bucket[4],myHandStrength);
-	for (i=0;i<=myHandStrength;i++)
+	for (i=0;i<myHandStrength;i++)
 	{
 		winningP += (node->data.bucket[i])/(double)total;
-		if (i == myHandStrength) winningP -= (node->data.bucket[i])/((double)total*2); 		//Yuchen: this accounts the probability of winning the opponent within the same bucket.
 	}
 	//fprintf(stderr,"\nShowing WinningP: %f",winningP);
 	return winningP;
@@ -192,12 +191,12 @@ Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)
 	uint8_t numRaise;		//number of raises allowed in this game
 	int handStrength;
 	int isFirst = 0;
-	Gametree *thisGametree;
+	Gametree *thisGametree = (Gametree *)malloc(sizeof(Gametree));
 
 	
 	currentRound = state->round;
 	numRaise = game->maxRaises[currentRound];
-	thisGametree = initTree(numRaise);
+	initTree(numRaise,thisGametree);
 	handStrength = computeHandStrength(state, selfID) - 1;	//fuck yuchen
 	if ((int)(game->firstPlayer[currentRound]) == selfID)
 		isFirst = 1;
@@ -247,7 +246,7 @@ void main()
 */
 
 
-Gametree* initTree(int numRaise)
+void initTree(int numRaise, Gametree *rootnode)
 //Generate the structure of the tree
 {
 	//First generate a full tree and then cut it to the gametree.
@@ -266,9 +265,8 @@ Gametree* initTree(int numRaise)
 	int i = 0;
 	int j = 0;
 	int temprear = rear;
-	Gametree* rootnode = (Gametree *)malloc(sizeof(Gametree));	
-	Gametree* temp;
-	
+	//Gametree* rootnode = (Gametree *)malloc(sizeof(Gametree));	
+	Gametree *temp;
 	Gametree *nodeindex[MAXNODE];
 	for (i = 0; i < MAXNODE; i++)
 		nodeindex[i] = NULL;
@@ -323,11 +321,13 @@ Gametree* initTree(int numRaise)
 			temprear++;
 
 			front++;
+			free(foldnode);
+			free(callnode);
+			free(raisenode);
 		}
 		rear = temprear;
 		level++;
 	}
-
 	//Begin to delete irreasonable nodes
 
 	for (i = 0; i < rear; i++)		//0~rear will be all the nodes
@@ -378,7 +378,7 @@ Gametree* initTree(int numRaise)
 		}
 	}
 //	free(nodeindex);
-	return rootnode;
+//	return rootnode;
 }
 
 Gametree* computeTreevalue(Game* game, State* state, 
@@ -467,6 +467,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 					}
 					#endif
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, actionList,actLen)*totalSpent-playerSpent;
+					free(actionList);
 				}
 			}
 			else								//B's move
@@ -499,6 +500,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 					}
 					#endif
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID ,actionList,actLen)*totalSpent-playerSpent;
+					free(actionList);
 				}
 			}
 		}
@@ -525,6 +527,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 				getOpponentAction(game,state,actionList,actLen,opponentID,opponentAction);
 				//fprintf(stderr,"\nOpponentActionProb:%f,%f,%f",*(opponentAction+2),*(opponentAction+1),*(opponentAction));
 				nodeindex[i]->parent->data = (*(opponentAction+2)) * nodeindex[i]->data + (*(opponentAction+1)) * nodeindex[i-1]->data + (*opponentAction) * nodeindex[i-2]->data;
+				free(actionList);
 			}
 			i -= 3;
 		}
@@ -542,6 +545,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 				getOpponentAction(game,state,actionList,actLen,opponentID,opponentAction);
 				//fprintf(stderr,"\nOpponentActionProb:%f,%f",*(opponentAction+1),*(opponentAction));
 				nodeindex[i]->parent->data = (*(opponentAction+1)) * nodeindex[i]->data + (*(opponentAction)) * nodeindex[i-1]->data;
+				free(actionList);
 			}
 			i -= 2;
 		}
@@ -723,6 +727,7 @@ void getActionList(Gametree *testnode, Action *actionList)
 //		fprintf(stderr,"\nAfterdebug: %d",(*(temp+i)).type);
 		i--;
 	}
+	free(temp);
 	//return actionList;
 }
 
