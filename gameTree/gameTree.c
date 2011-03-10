@@ -116,9 +116,10 @@ DataType winningProb(Game *game, State *state, int myHandStrength,
 	}
 
 	//fprintf(stderr,"\nBucket: %d %d %d %d %d. hand: %d",node->data.bucket[0],node->data.bucket[1],node->data.bucket[2],node->data.bucket[3],node->data.bucket[4],myHandStrength);
-	for (i=0;i<myHandStrength;i++)
+	for (i=0;i<=myHandStrength;i++)
 	{
 		winningP += (node->data.bucket[i])/(double)total;
+		if (i == myHandStrength) winningP -= (node->data.bucket[i])/((double)total*2);
 	}
 	//fprintf(stderr,"\nShowing WinningP: %f",winningP);
 	return winningP;
