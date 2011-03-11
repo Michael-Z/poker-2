@@ -33,7 +33,7 @@ int main( int argc, char **argv )
   char line[ MAX_LINE_LEN ];
   int actLen;
   Action actionList[MAXDEGREE];
-  Gametree* gTree;
+  Gametree* gTree = NULL;
   Gametree* tempTree;
 
 	if( argc < 4 ) {
@@ -118,6 +118,8 @@ int main( int argc, char **argv )
     len = readMatchState( line, game, &state );
 	if ((game_played >= 100) && (finishOnce || (state.state.round != preRound))) 
 	{
+		if (gTree)
+			releaseTree(gTree);
 		gTree = constructTree(game,&state.state, 1-state.viewingPlayer, state.viewingPlayer);
 		//if ((game_played == 9999) || (computeHandStrength(&state.state, state.viewingPlayer) == 5))
 		{

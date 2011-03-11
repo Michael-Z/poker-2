@@ -192,12 +192,12 @@ Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)
 	uint8_t numRaise;		//number of raises allowed in this game
 	int handStrength;
 	int isFirst = 0;
-	Gametree *thisGametree;
+	Gametree *thisGametree = (Gametree *)malloc(sizeof(Gametree));
 
 	
 	currentRound = state->round;
 	numRaise = game->maxRaises[currentRound];
-	thisGametree = initTree(numRaise);
+	initTree(numRaise,thisGametree);
 	handStrength = computeHandStrength(state, selfID) - 1;	//fuck yuchen
 	if ((int)(game->firstPlayer[currentRound]) == selfID)
 		isFirst = 1;
@@ -207,6 +207,15 @@ Gametree* constructTree(Game *game, State *state,int opponentID, int selfID)
 	return thisGametree;
 }
 
+void releaseTree(Gametree* rootnode)
+{
+	if (!rootnode)
+		return;
+	releaseTree(rootnode->fold);
+	releaseTree(rootnode->call);
+	releaseTree(rootnode->raise);
+	free(rootnode);
+}
 
 /*
 void main()
@@ -247,7 +256,7 @@ void main()
 */
 
 
-Gametree* initTree(int numRaise)
+void initTree(int numRaise,Gametree *rootnode)
 //Generate the structure of the tree
 {
 	//First generate a full tree and then cut it to the gametree.
@@ -266,7 +275,7 @@ Gametree* initTree(int numRaise)
 	int i = 0;
 	int j = 0;
 	int temprear = rear;
-	Gametree* rootnode = (Gametree *)malloc(sizeof(Gametree));	
+	//Gametree* rootnode = (Gametree *)malloc(sizeof(Gametree));	
 	Gametree* temp;
 	
 	Gametree *nodeindex[MAXNODE];
@@ -378,7 +387,7 @@ Gametree* initTree(int numRaise)
 		}
 	}
 //	free(nodeindex);
-	return rootnode;
+	//return rootnode;
 }
 
 Gametree* computeTreevalue(Game* game, State* state, 
@@ -467,6 +476,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 					}
 					#endif
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID, actionList,actLen)*totalSpent-playerSpent;
+					free(actionList);
 				}
 			}
 			else								//B's move
@@ -499,6 +509,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 					}
 					#endif
 					nodeindex[i]->data = winningProb(game, state, handStrength, opponentID ,actionList,actLen)*totalSpent-playerSpent;
+					free(actionList);
 				}
 			}
 		}
@@ -525,6 +536,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 				getOpponentAction(game,state,actionList,actLen,opponentID,opponentAction);
 				//fprintf(stderr,"\nOpponentActionProb:%f,%f,%f",*(opponentAction+2),*(opponentAction+1),*(opponentAction));
 				nodeindex[i]->parent->data = (*(opponentAction+2)) * nodeindex[i]->data + (*(opponentAction+1)) * nodeindex[i-1]->data + (*opponentAction) * nodeindex[i-2]->data;
+				free(actionList);
 			}
 			i -= 3;
 		}
@@ -542,6 +554,7 @@ Gametree* computeTreevalue(Game* game, State* state,
 				getOpponentAction(game,state,actionList,actLen,opponentID,opponentAction);
 				//fprintf(stderr,"\nOpponentActionProb:%f,%f",*(opponentAction+1),*(opponentAction));
 				nodeindex[i]->parent->data = (*(opponentAction+1)) * nodeindex[i]->data + (*(opponentAction)) * nodeindex[i-1]->data;
+				free(actionList);
 			}
 			i -= 2;
 		}
@@ -724,6 +737,7 @@ void getActionList(Gametree *testnode, Action *actionList)
 		i--;
 	}
 	//return actionList;
+	free(temp);
 }
 
 DataType findMax(DataType x1, DataType x2, DataType x3)

@@ -43,9 +43,10 @@ typedef struct Gametree
 
 //functions
 
-
-Gametree* initTree(int numRaise);
+void printTree(Gametree* temptree, int numRaise);
+void initTree(int numRaise, Gametree* rootnode);
 Gametree* constructTree(Game *game, State *state, int opponentID, int selfID);	
+void releaseTree(Gametree* rootnode);
 Gametree* computeTreevalue(Game* game, State* state, Gametree* emptyTree, int numRaise, DataType handStrength, int opponentID, int isFirst);
 int getDegree(Gametree* testnode);
 int totalSpentChips(Game *game, State *state, Gametree *testnode, int* playerSpent, int isFirst);
